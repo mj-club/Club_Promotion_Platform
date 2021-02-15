@@ -3,11 +3,12 @@ import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { dbService, storageService } from "fbase";
-import Introduction from "./Introduction";
-import ContactUs from "./ContactUs";
+import Introduction from "../components/Introduction";
+import ContactUs from "../components/ContactUs";
 import Layout from "../components/Layout.js";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
+import Recruitment from "components/Recruitment";
 
 const useStyles = makeStyles((theme) => ({
   tabs: {
@@ -126,7 +127,11 @@ const BoothPage = () => {
       </Grid>
       {/* 3단계 신입생 모집 안내 */}
       <Grid container id="recruitment">
-        <div>3단계 신입생 모집 안내</div>
+        {clubObj !== undefined ? (
+          <Recruitment content={clubObj.recruitment} />
+        ) : (
+          <></>
+        )}
       </Grid>
       {/* 홍보 이미지 캐러셀 (슬릭 고려) */}
       <Grid container id="poster">
@@ -136,7 +141,11 @@ const BoothPage = () => {
       </Grid>
       {/* 문의창구 아이콘 형식 */}
       <Grid container id="contact_us">
-        <ContactUs />
+        {clubObj !== undefined ? (
+          <ContactUs contactus={clubObj.contact_us} />
+        ) : (
+          <></>
+        )}
       </Grid>
     </Grid>
   );
