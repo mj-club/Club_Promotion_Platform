@@ -2,12 +2,46 @@ import { Box } from "@material-ui/core";
 import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
 import { dbService } from "fbase";
+import Layout from "../components/Layout.js";
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+
+const useStyles = makeStyles((theme) => ({
+  tabs: {
+    padding: theme.spacing(0),
+    margin: theme.spacing(1),
+    borderRadius: "10px",
+    fontSize: "12px",
+    minHeight: "24px"
+  },
+  activeTabs: {
+    padding: theme.spacing(0),
+    margin: theme.spacing(1),
+    borderRadius: "10px",
+    backgroundColor: "orange",
+    color: "white",
+    fontSize: "12px",
+    minHeight: "24px"
+  },
+  indicator: {
+    display: "none"
+  }
+}));
+
+function a11yProps(index) {
+  return {
+    id: `full-width-tab-${index}`,
+    'aria-controls': `full-width-tabpanel-${index}`,
+  };
+}
 
 const BoothPage = () => {
+  const [value, setValue] = React.useState(0);
+  const classes = useStyles();
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   const clubsRef = dbService.collection("clubs").doc("COA");
   clubsRef
     .get()
@@ -22,29 +56,29 @@ const BoothPage = () => {
     .catch(function (error) {
       console.log("Error getting document:", error);
     });
+
+
   return (
     <Grid container>
       {/*동아리 간단 소개 고정화면*/}
-      <Grid container id="fixedInfo">
-        <div></div>
-      </Grid>
+      <Layout />
       {/* nav 모바일 pc 고려 */}
-      {/* <Grid container id="nav">
-        <Grid>
-          <AppBar position="static">
-            <Tabs
-              // orientation="vertical"
-              indicatorColor="primary"
-              textColor="primary"
-              centered
-            >
-              <Tab label="Item One" />
-              <Tab label="Item Two" />
-              <Tab label="Item Three" />
-            </Tabs>
-          </AppBar>
-        </Grid>
-      </Grid> */}
+      <Grid container id="tab">
+        <Tabs
+          value={value}
+          classes={{
+            indicator: classes.indicator
+          }}
+          onChange={handleChange}
+          variant="fullWidth"
+          aria-label="full width tabs example"
+        >
+          <Tab component="a" className={value === 0 ? classes.activeTabs : classes.tabs} label="동아리 전시" {...a11yProps(0)} />
+          <Tab className={value === 1 ? classes.activeTabs : classes.tabs} label="동아리 소개" {...a11yProps(1)} />
+          <Tab className={value === 2 ? classes.activeTabs : classes.tabs} label="신입회원 모집 안내" {...a11yProps(2)} />
+          <Tab className={value === 3 ? classes.activeTabs : classes.tabs} label="가입 문의" {...a11yProps(3)} />
+        </Tabs>
+      </Grid>
       {/* 1단계 테마에 맞는 전시관 */}
       <Grid container id="show">
         <div>단계 테마에 맞는 전시관</div>
