@@ -6,7 +6,6 @@ import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import BBTreeGB from "styles/fonts/BBTreeGB.woff";
 import CssBaseline from "@material-ui/core/CssBaseline";
-
 const bbtreegb = {
   fontFamily: "BBTreeGB",
   src: `url(${BBTreeGB}) format('woff')`,
