@@ -1,27 +1,42 @@
-import { Box } from "@material-ui/core";
-import React, { useEffect } from "react";
+import { Box, setRef } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import { dbService } from "fbase";
+import { dbService, storageService } from "fbase";
+import Introduction from "./Introduction";
+import ContactUs from "./ContactUs";
+
+const loadImg = async () => {
+  const urls = [];
+  const arr = await storageService.ref().child("COA").listAll();
+
+  for (let i = 0; i < arr.items.length; i++) {
+    let url = await arr.items[i].getDownloadURL();
+    urls.push(url);
+  }
+  return urls;
+};
+
+const loading = async () => {
+  const clubsRef = dbService.collection("clubs").doc("COA");
+  let clubObj = await (await clubsRef.get()).data();
+  return clubObj;
+};
 
 const BoothPage = () => {
-  const clubsRef = dbService.collection("clubs").doc("COA");
-  clubsRef
-    .get()
-    .then(function (doc) {
-      if (doc.exists) {
-        console.log("Document data:", doc.data());
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
-    })
-    .catch(function (error) {
-      console.log("Error getting document:", error);
-    });
+  const [urls, setUrls] = useState([]);
+  const [clubObj, setClubObj] = useState(undefined);
+  useEffect(async () => {
+    const obj = await loading();
+    const images = await loadImg();
+    console.log(obj);
+    setClubObj(obj);
+    setUrls(images);
+  }, []);
+
   return (
     <Grid container>
       {/*동아리 간단 소개 고정화면*/}
@@ -51,7 +66,11 @@ const BoothPage = () => {
       </Grid>
       {/* 2단계  동아리 소개 전문 */}
       <Grid container id="introduction">
-        <div> 2단계 동아리 소개 전문</div>
+        {clubObj !== undefined ? (
+          <Introduction content={clubObj.introduction} />
+        ) : (
+          <></>
+        )}
       </Grid>
       {/* 활동 계획 */}
       <Grid container id="plan">
@@ -63,11 +82,13 @@ const BoothPage = () => {
       </Grid>
       {/* 홍보 이미지 캐러셀 (슬릭 고려) */}
       <Grid container id="poster">
-        <div>홍보 이미지 캐러셀 (슬릭 고려)</div>
+        {urls.map((url, i) => {
+          return <img key={i} src={url} alt={url} width="100px" />;
+        })}
       </Grid>
       {/* 문의창구 아이콘 형식 */}
       <Grid container id="contact_us">
-        <div>문의창구 아이콘 형식</div>
+        <ContactUs />
       </Grid>
     </Grid>
   );
