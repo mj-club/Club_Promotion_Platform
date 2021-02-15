@@ -6,10 +6,17 @@ import { dbService, storageService } from "fbase";
 import Introduction from "./Introduction";
 import ContactUs from "./ContactUs";
 import Layout from "../components/Layout.js";
+import Posts from "../components/Posts.js"
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
+
 const useStyles = makeStyles((theme) => ({
+  posts: {
+    width: "100%",
+    maxWidth: "100vw",
+    overflow: "hidden"
+  },
   tabs: {
     padding: theme.spacing(0),
     margin: theme.spacing(1),
@@ -53,7 +60,13 @@ const loading = async () => {
   let clubObj = await (await clubsRef.get()).data();
   return clubObj;
 };
-
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 3
+};
 const BoothPage = () => {
   const [value, setValue] = React.useState(0);
   const classes = useStyles();
@@ -129,11 +142,7 @@ const BoothPage = () => {
         <div>3단계 신입생 모집 안내</div>
       </Grid>
       {/* 홍보 이미지 캐러셀 (슬릭 고려) */}
-      <Grid container id="poster">
-        {urls.map((url, i) => {
-          return <img key={i} src={url} alt={url} width="100px" />;
-        })}
-      </Grid>
+      <Posts urls={urls} />
       {/* 문의창구 아이콘 형식 */}
       <Grid container id="contact_us">
         <ContactUs />
