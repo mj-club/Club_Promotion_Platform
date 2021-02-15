@@ -1,11 +1,13 @@
-import { Box } from "@material-ui/core";
-import React, { useEffect } from "react";
+import { Box, setRef } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import { dbService } from "fbase";
+import { dbService, storageService } from "fbase";
+import Introduction from "./Introduction";
+import ContactUs from "./ContactUs";
 import Layout from "../components/Layout.js";
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
 
 const useStyles = makeStyles((theme) => ({
   tabs: {
@@ -13,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     borderRadius: "10px",
     fontSize: "12px",
-    minHeight: "24px"
+    minHeight: "24px",
   },
   activeTabs: {
     padding: theme.spacing(0),
@@ -22,19 +24,35 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "orange",
     color: "white",
     fontSize: "12px",
-    minHeight: "24px"
+    minHeight: "24px",
   },
   indicator: {
-    display: "none"
-  }
+    display: "none",
+  },
 }));
 
 function a11yProps(index) {
   return {
     id: `full-width-tab-${index}`,
-    'aria-controls': `full-width-tabpanel-${index}`,
+    "aria-controls": `full-width-tabpanel-${index}`,
   };
 }
+const loadImg = async () => {
+  const urls = [];
+  const arr = await storageService.ref().child("COA").listAll();
+
+  for (let i = 0; i < arr.items.length; i++) {
+    let url = await arr.items[i].getDownloadURL();
+    urls.push(url);
+  }
+  return urls;
+};
+
+const loading = async () => {
+  const clubsRef = dbService.collection("clubs").doc("COA");
+  let clubObj = await (await clubsRef.get()).data();
+  return clubObj;
+};
 
 const BoothPage = () => {
   const [value, setValue] = React.useState(0);
@@ -42,21 +60,15 @@ const BoothPage = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const clubsRef = dbService.collection("clubs").doc("COA");
-  clubsRef
-    .get()
-    .then(function (doc) {
-      if (doc.exists) {
-        console.log("Document data:", doc.data());
-      } else {
-        // doc.data() will be undefined in this case
-        console.log("No such document!");
-      }
-    })
-    .catch(function (error) {
-      console.log("Error getting document:", error);
-    });
-
+  const [urls, setUrls] = useState([]);
+  const [clubObj, setClubObj] = useState(undefined);
+  useEffect(async () => {
+    const obj = await loading();
+    const images = await loadImg();
+    console.log(obj);
+    setClubObj(obj);
+    setUrls(images);
+  }, []);
 
   return (
     <Grid container>
@@ -67,16 +79,33 @@ const BoothPage = () => {
         <Tabs
           value={value}
           classes={{
-            indicator: classes.indicator
+            indicator: classes.indicator,
           }}
           onChange={handleChange}
           variant="fullWidth"
           aria-label="full width tabs example"
         >
-          <Tab component="a" className={value === 0 ? classes.activeTabs : classes.tabs} label="동아리 전시" {...a11yProps(0)} />
-          <Tab className={value === 1 ? classes.activeTabs : classes.tabs} label="동아리 소개" {...a11yProps(1)} />
-          <Tab className={value === 2 ? classes.activeTabs : classes.tabs} label="신입회원 모집 안내" {...a11yProps(2)} />
-          <Tab className={value === 3 ? classes.activeTabs : classes.tabs} label="가입 문의" {...a11yProps(3)} />
+          <Tab
+            component="a"
+            className={value === 0 ? classes.activeTabs : classes.tabs}
+            label="동아리 전시"
+            {...a11yProps(0)}
+          />
+          <Tab
+            className={value === 1 ? classes.activeTabs : classes.tabs}
+            label="동아리 소개"
+            {...a11yProps(1)}
+          />
+          <Tab
+            className={value === 2 ? classes.activeTabs : classes.tabs}
+            label="신입회원 모집 안내"
+            {...a11yProps(2)}
+          />
+          <Tab
+            className={value === 3 ? classes.activeTabs : classes.tabs}
+            label="가입 문의"
+            {...a11yProps(3)}
+          />
         </Tabs>
       </Grid>
       {/* 1단계 테마에 맞는 전시관 */}
@@ -85,7 +114,11 @@ const BoothPage = () => {
       </Grid>
       {/* 2단계  동아리 소개 전문 */}
       <Grid container id="introduction">
-        <div> 2단계 동아리 소개 전문</div>
+        {clubObj !== undefined ? (
+          <Introduction content={clubObj.introduction} />
+        ) : (
+          <></>
+        )}
       </Grid>
       {/* 활동 계획 */}
       <Grid container id="plan">
@@ -97,11 +130,13 @@ const BoothPage = () => {
       </Grid>
       {/* 홍보 이미지 캐러셀 (슬릭 고려) */}
       <Grid container id="poster">
-        <div>홍보 이미지 캐러셀 (슬릭 고려)</div>
+        {urls.map((url, i) => {
+          return <img key={i} src={url} alt={url} width="100px" />;
+        })}
       </Grid>
       {/* 문의창구 아이콘 형식 */}
       <Grid container id="contact_us">
-        <div>문의창구 아이콘 형식</div>
+        <ContactUs />
       </Grid>
     </Grid>
   );
