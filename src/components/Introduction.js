@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 const Introduction = ({ content }) => {
   const classes = useStyles();
   return (
-    <Paper elevation={3} className={classes.paper}>
+    <Paper elevation={1} className={classes.paper}>
       <div className={classes.title}>동아리 소개</div>
       <div className={classes.content}>{content}</div>
     </Paper>
