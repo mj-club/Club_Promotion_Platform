@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
-    fontSize: "14px",
+    fontSize: "18px",
   },
   subtitle: {
     fontSize: "12px",
@@ -37,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: "#00cdac",
   },
+  hashTag: {
+    marginRight: theme.spacing(1),
+  },
   // tabs: {
   //   backgroundColor: "white",
   //   display: "flex",
@@ -52,7 +55,7 @@ function a11yProps(index) {
   };
 }
 
-export default function Layout() {
+export default function Layout({ name, brief_introduction, hash_tags }) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -73,16 +76,18 @@ export default function Layout() {
               <ChevronLeftIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title}>
-              공공혁신조달
+              {name}
             </Typography>
           </div>
           <div className={classes.flex}>
             <Typography variant="h6" className={classes.subtitle}>
-              국민이 만든 혁식, 정부가 먼저 구매합니다.
+              {brief_introduction}
             </Typography>
           </div>
           <div className={classes.flex}>
-            <HashTag />
+            {hash_tags.map((hash_tag) => (
+              <span className={classes.hashTag}>{"#" + hash_tag}</span>
+            ))}
           </div>
         </Toolbar>
       </AppBar>

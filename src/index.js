@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import "./styles/main.scss";
 import BBTreeGB from "styles/fonts/BBTreeGB.woff";
 import CssBaseline from "@material-ui/core/CssBaseline";
 const bbtreegb = {
@@ -24,14 +24,15 @@ const theme = createMuiTheme({
     },
   },
 });
+
 console.log(theme.typography);
 ReactDOM.render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <App />
-    </ThemeProvider>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <ThemeProvider theme={theme}>
+    <CssBaseline />
+    <App />
+  </ThemeProvider>,
+  // </React.StrictMode>,
   document.getElementById("root")
 );
 

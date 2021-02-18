@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     wordWrap: "break-word",
   },
   paper: {
-    width: "100%",
+    minHeight: "100vh",
   },
 });
 const Recruitment = ({ content }) => {
@@ -21,10 +21,10 @@ const Recruitment = ({ content }) => {
     <Paper elevation={1} className={classes.paper}>
       <div className={classes.title}>신입생 모집 안내</div>
       <div className={classes.content}>
-        {content.map((line) => (
-          <>
-            {line} <br />
-          </>
+        {content.map((line, i) => (
+          <span key={i}>
+            <span>{line}</span> <br />
+          </span>
         ))}
       </div>
     </Paper>

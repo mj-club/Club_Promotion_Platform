@@ -7,9 +7,12 @@ import Introduction from "../components/Introduction";
 import ContactUs from "../components/ContactUs";
 import Layout from "../components/Layout.js";
 import Posts from "../components/Posts.js";
+import Show from "../components/Show.js";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Recruitment from "components/Recruitment";
+import FileUpload from "./FileUpload";
+import Fade from "react-reveal/Fade";
 
 const useStyles = makeStyles((theme) => ({
   posts: {
@@ -36,6 +39,15 @@ const useStyles = makeStyles((theme) => ({
   indicator: {
     display: "none",
   },
+  recruitmentFade: {
+    width: "100%",
+  },
+  testImg: {
+    width: "80%",
+    margin: "5%",
+    // minHeight: "100vh",
+  },
+  test: {},
 }));
 
 function a11yProps(index) {
@@ -83,155 +95,100 @@ const BoothPage = () => {
     setUrls(images);
   }, []);
 
-  //test
-  const mkArr = () => {
-    const textArea = document.getElementById("upload");
-    const lines = textArea.value.split("\n");
-    console.log(lines.length);
-    return lines;
-  };
-  const upload = async (lines) => {
-    const state = await dbService.collection("clubs").doc("COA").update({
-      recruitment: lines,
-    });
-  };
-  const handleUpload = async () => {
-    console.log(clubObj);
-    const lines = mkArr();
-    upload(lines);
-  };
-  return (
-    <>
+  return clubObj !== undefined ? (
+    <Grid container>
+      {/*동아리 간단 소개 고정화면*/}
+      <Layout
+        name={clubObj.name}
+        brief_introduction={clubObj.brief_introduction}
+        hash_tags={clubObj.hash_tags}
+      />
+      {/* nav 모바일 pc 고려 */}
+      <Grid container id="tab">
+        <Tabs
+          value={value}
+          classes={{
+            indicator: classes.indicator,
+          }}
+          onChange={handleChange}
+          variant="fullWidth"
+          aria-label="full width tabs example"
+        >
+          <Tab
+            component="a"
+            className={value === 0 ? classes.activeTabs : classes.tabs}
+            label="동아리 전시"
+            {...a11yProps(0)}
+            href="#show"
+          />
+          <Tab
+            className={value === 1 ? classes.activeTabs : classes.tabs}
+            label="동아리 소개"
+            {...a11yProps(1)}
+            href="#introduction"
+          />
+          <Tab
+            className={value === 2 ? classes.activeTabs : classes.tabs}
+            label="신입회원 모집 안내"
+            {...a11yProps(2)}
+            href="#recruitment"
+          />
+          <Tab
+            className={value === 3 ? classes.activeTabs : classes.tabs}
+            label="가입 문의"
+            {...a11yProps(3)}
+          />
+        </Tabs>
+      </Grid>
       {value === 3 ? (
-        <Grid container>
-          {/*동아리 간단 소개 고정화면*/}
-          <Layout />
-          {/* nav 모바일 pc 고려 */}
-          <Grid container id="tab">
-            <Tabs
-              value={value}
-              classes={{
-                indicator: classes.indicator,
-              }}
-              onChange={handleChange}
-              variant="fullWidth"
-              aria-label="full width tabs example"
-            >
-              <Tab
-                component="a"
-                className={value === 0 ? classes.activeTabs : classes.tabs}
-                label="동아리 전시"
-                {...a11yProps(0)}
-              />
-              <Tab
-                className={value === 1 ? classes.activeTabs : classes.tabs}
-                label="동아리 소개"
-                {...a11yProps(1)}
-              />
-              <Tab
-                className={value === 2 ? classes.activeTabs : classes.tabs}
-                label="신입회원 모집 안내"
-                {...a11yProps(2)}
-              />
-              <Tab
-                className={value === 3 ? classes.activeTabs : classes.tabs}
-                label="가입 문의"
-                {...a11yProps(3)}
-              />
-            </Tabs>
-          </Grid>
-          <Grid container>
-            <textarea rows="30" cols="300" id="upload"></textarea>
-          </Grid>
-          <Grid container>
-            <Button
-              type="button"
-              fullWidth
-              variant="contained"
-              onClick={handleUpload}
-            >
-              등록
-            </Button>
-          </Grid>
-        </Grid>
+        <FileUpload clubObj={clubObj} />
       ) : (
-        <Grid container>
-          {/*동아리 간단 소개 고정화면*/}
-          <Layout />
-          {/* nav 모바일 pc 고려 */}
-          <Grid container id="tab">
-            <Tabs
-              value={value}
-              classes={{
-                indicator: classes.indicator,
-              }}
-              onChange={handleChange}
-              variant="fullWidth"
-              aria-label="full width tabs example"
-            >
-              <Tab
-                component="a"
-                className={value === 0 ? classes.activeTabs : classes.tabs}
-                label="동아리 전시"
-                {...a11yProps(0)}
-                href="#show"
-              />
-              <Tab
-                className={value === 1 ? classes.activeTabs : classes.tabs}
-                label="동아리 소개"
-                {...a11yProps(1)}
-                href="#introduction"
-              />
-              <Tab
-                className={value === 2 ? classes.activeTabs : classes.tabs}
-                label="신입회원 모집 안내"
-                {...a11yProps(2)}
-                href="#recruitment"
-              />
-              <Tab
-                className={value === 3 ? classes.activeTabs : classes.tabs}
-                label="가입 문의"
-                {...a11yProps(3)}
-              />
-            </Tabs>
+        <>
+          {/* 1단계 테마에 맞는 전시관  */}
+          <Grid container id="test" justify="center">
+            <Fade bottom={true} duration={1000} delay={500} distance="30px">
+              <img src={urls[0]} className={classes.testImg} />
+            </Fade>
           </Grid>
-          {/* 1단계 테마에 맞는 전시관 */}
-          <Grid container id="show">
-            <div>단계 테마에 맞는 전시관</div>
-          </Grid>
-          {/* 2단계  동아리 소개 전문 */}
+          {/* 2단계 동아리 소개 전문  */}
           <Grid container id="introduction">
-            {clubObj !== undefined ? (
+            <Fade bottom={true} duration={1000} delay={1000} distance="30px">
               <Introduction content={clubObj.introduction} />
-            ) : (
-              <></>
-            )}
+              {/* <Show /> */}
+            </Fade>
           </Grid>
-          {/* 활동 계획 */}
+          <Grid container id="show"></Grid>
+          {/* 활동 계획  */}
           <Grid container id="plan">
-            <div>활동 계획</div>
+            {/* <div>활동 계획</div> */}
           </Grid>
-          {/* 3단계 신입생 모집 안내 */}
+          {/* 3단계 신입생 모집 안내  */}
           <Grid container id="recruitment">
-            {clubObj !== undefined ? (
-              <Recruitment content={clubObj.recruitment} />
-            ) : (
-              <></>
-            )}
+            <span className={classes.recruitmentFade}>
+              <Fade
+                bottom={true}
+                duration={1000}
+                delay={500}
+                distance="30px"
+                // className={classes.recruitmentFade}
+              >
+                <Recruitment content={clubObj.recruitment} />
+                <Posts urls={urls} />
+              </Fade>
+            </span>
           </Grid>
-          {/* 홍보 이미지 캐러셀 (슬릭 고려) */}
-          <Posts urls={urls} />
+          {/* 홍보 이미지 캐러셀 (슬릭 고려)  */}
           {/* 문의창구 아이콘 형식 */}
-          <Grid container id="contact_us">
-            {clubObj !== undefined ? (
+          <Grid container id="contact_us" justify="center">
+            <Fade bottom={true} duration={1000} delay={500} distance="30px">
               <ContactUs contactus={clubObj.contact_us} />
-            ) : (
-              <></>
-            )}
+            </Fade>
           </Grid>
-        </Grid>
+        </>
       )}
-    </>
+    </Grid>
+  ) : (
+    <></>
   );
 };
 

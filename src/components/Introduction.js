@@ -11,6 +11,9 @@ const useStyles = makeStyles({
     // textAlign: "center",
     padding: "2%",
   }, // a style rule
+  paper: {
+    // minHeight: "100vh",
+  },
 });
 const Introduction = ({ content }) => {
   const classes = useStyles();
