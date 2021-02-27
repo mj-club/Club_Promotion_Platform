@@ -12,14 +12,21 @@ const bbtreegb = {
   fontWeight: "normal",
   fontStyle: "normal",
 };
+const nanumbarungothic = {
+  fontFamily: "NanumBarunGothic",
+  fontStyle: "normal",
+  fontWeight: "400",
+  src: `url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff')`,
+};
+
 const theme = createMuiTheme({
   typography: {
-    fontFamily: "BBTreeGB",
+    fontFamily: "NanumBarunGothic",
   },
   overrides: {
     MuiCssBaseline: {
       "@global": {
-        "@font-face": [bbtreegb],
+        "@font-face": [nanumbarungothic],
       },
     },
   },

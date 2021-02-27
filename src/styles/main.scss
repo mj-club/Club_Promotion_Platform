@@ -1,2 +1,22 @@
+@import "./abstracts/mixins";
+@import "./abstracts/variables";
+@import "./abstracts/helpers";
+@import "~bootstrap/scss/bootstrap";
+
+@import "./base/base";
+@import "./base/typography";
+
+@import "./components/buttons";
+
+@import "./layout/footer";
+@import "./layout/sections";
+
 @import "./sections/hero";
-@import "utils";
+@import "./sections/introduce";
+@import "./sections/contact";
+@import "./sections/projects";
+@import "./sections/imageMap";
+@import "./sections/chapterNav";
+@import "./sections/appBar";
+
+// @import "utils";

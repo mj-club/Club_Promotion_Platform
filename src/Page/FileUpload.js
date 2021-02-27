@@ -1,15 +1,7 @@
 import { Box, Button, setRef } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { dbService, storageService } from "fbase";
-import Introduction from "../components/Introduction";
-import ContactUs from "../components/ContactUs";
-import Layout from "../components/Layout.js";
-import Posts from "../components/Posts.js";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Recruitment from "components/Recruitment";
 
 const FileUpload = ({ clubObj }) => {
   //test
@@ -20,9 +12,17 @@ const FileUpload = ({ clubObj }) => {
     return lines;
   };
   const upload = async (lines) => {
-    const state = await dbService.collection("clubs").doc("COA").update({
-      recruitment: lines,
-    });
+    const clubName = document.getElementById("clubName").value;
+    const field = document.getElementById("field").value;
+    if (field === "recruitment") {
+      const state = await dbService.collection("clubs").doc(clubName).update({
+        recruitment: lines,
+      });
+    } else if (field === "introduction") {
+      const state = await dbService.collection("clubs").doc(clubName).update({
+        introduction: lines,
+      });
+    }
   };
   const handleUpload = async () => {
     console.log(clubObj);
@@ -33,6 +33,10 @@ const FileUpload = ({ clubObj }) => {
     <>
       <Grid container>
         <textarea rows="30" cols="300" id="upload"></textarea>
+      </Grid>
+      <Grid container>
+        <input id="clubName" placeholder="동아리명"></input>
+        <input id="field" placeholder="필드명"></input>
       </Grid>
       <Grid container>
         <Button
