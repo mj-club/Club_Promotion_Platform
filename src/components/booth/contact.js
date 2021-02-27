@@ -6,11 +6,11 @@ import Title from "components/booth/title";
 import { Grid, IconButton } from "@material-ui/core";
 
 const Contact = () => {
-  const { clubObj } = useContext(PortfolioContext);
+  const { clubObj, key } = useContext(PortfolioContext);
   const { facebook, instargram, openchat } = clubObj.contact_us;
   const instargramUrl = `https://www.instagram.com/${instargram}/`;
   return (
-    <section id="contact">
+    <section id="contact" className={key}>
       <Container>
         <Title title="Contact Us" />
         <Fade bottom duration={1000} delay={800} distance="30px">

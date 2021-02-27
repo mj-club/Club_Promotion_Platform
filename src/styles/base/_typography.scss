@@ -47,7 +47,7 @@ a:hover {
   // Responsive text purple style
   @include respond(phone) {
     background-image: none;
-    -webkit-text-fill-color: $secondary-color;
+    -webkit-text-fill-color: $social-secondary-color;
     // font-size: 2em;
   }
 
@@ -68,7 +68,7 @@ a:hover {
   // Responsive text purple style
   @include respond(phone) {
     background-image: none;
-    -webkit-text-fill-color: $secondary-color;
+    -webkit-text-fill-color: $art-secondary-color;
     // font-size: 2em;
   }
 
@@ -89,7 +89,7 @@ a:hover {
   // Responsive text purple style
   @include respond(phone) {
     background-image: none;
-    -webkit-text-fill-color: $secondary-color;
+    -webkit-text-fill-color: $religion-secondary-color;
     // font-size: 2em;
   }
 
@@ -110,7 +110,7 @@ a:hover {
   // Responsive text purple style
   @include respond(phone) {
     background-image: none;
-    -webkit-text-fill-color: $secondary-color;
+    -webkit-text-fill-color: $sports-secondary-color;
     // font-size: 2em;
   }
 
@@ -131,7 +131,7 @@ a:hover {
   // Responsive text purple style
   @include respond(phone) {
     background-image: none;
-    -webkit-text-fill-color: $secondary-color;
+    -webkit-text-fill-color: $study-secondary-color;
     // font-size: 2em;
   }
 
@@ -151,7 +151,7 @@ a:hover {
   // Responsive text purple style
   @include respond(phone) {
     background-image: none;
-    -webkit-text-fill-color: $secondary-color;
+    -webkit-text-fill-color: $volunteer-secondary-color;
     // font-size: 2em;
   }
 
@@ -171,7 +171,7 @@ a:hover {
   // Responsive text purple style
   @include respond(phone) {
     background-image: none;
-    -webkit-text-fill-color: $secondary-color;
+    -webkit-text-fill-color: $exhibition-secondary-color;
     // font-size: 2em;
   }
 
