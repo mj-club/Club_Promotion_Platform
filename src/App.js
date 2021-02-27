@@ -1,12 +1,21 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { firestore } from "./fbase";
-import background from "img/KakaoTalk_20210212_021345471.jpg";
-import BoothPage from "Page/Booth";
-
+import Booth from "Page/Booth";
+import Main from "Page/Main";
+import { makeStyles } from "@material-ui/core/styles";
+import AppRouter from "components/Router";
+const useStyles = makeStyles((theme) => ({
+  rootColor: {
+    backgroundColor: "white",
+  },
+}));
+// "react-image-mapper": "0.0.15",
 function App() {
+  const classes = useStyles();
   return (
-    // <div className="App">
+    // <div className={classes.rootColor}>
+    /* // <div className="App">
     //   <header
     //     className="App-header"
     //     style={{
@@ -27,8 +36,10 @@ function App() {
     //       Learn React
     //     </a>
     //   </header>
-    // </div>
-    <BoothPage />
+    // </div> */
+    /* <Main />
+    </div> */
+    <AppRouter />
   );
 }
 
