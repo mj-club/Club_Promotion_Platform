@@ -1,9 +1,9 @@
 #contact {
-  background-image: linear-gradient(
-    135deg,
-    $primary-color 0%,
-    $secondary-color 100%
-  );
+  // background-image: linear-gradient(
+  //   135deg,
+  //   $primary-color 0%,
+  //   $secondary-color 100%
+  // );
   -webkit-clip-path: polygon(0 15vh, 100% 0, 100% 100%, 0 100%);
   clip-path: polygon(0 15vh, 100% 0, 100% 100%, 0 100%);
   padding: 15rem 0 10rem 0;
@@ -37,4 +37,54 @@
       }
     }
   }
+}
+
+#contact.volunteer{
+  background-image: linear-gradient(
+    135deg,
+    $volunteer-primary-color 0%,
+    $volunteer-secondary-color 100%
+  );
+}
+#contact.exhibition {
+  background-image: linear-gradient(
+    135deg,
+    $exhibition-primary-color 0%,
+    $exhibition-secondary-color 100%
+  );
+}
+#contact.art {
+  background-image: linear-gradient(
+    135deg,
+    $art-primary-color 0%,
+    $art-secondary-color 100%
+  );
+}
+#contact.social {
+  background-image: linear-gradient(
+    135deg,
+    $social-primary-color 0%,
+    $social-secondary-color 100%
+  );
+}
+#contact.religion {
+  background-image: linear-gradient(
+    135deg,
+    $religion-primary-color 0%,
+    $religion-secondary-color 100%
+  );
+}
+#contact.sports {
+  background-image: linear-gradient(
+    135deg,
+    $sports-primary-color 0%,
+    $sports-secondary-color 100%
+  );
+}
+#contact.study {
+  background-image: linear-gradient(
+    135deg,
+    $study-primary-color 0%,
+    $study-secondary-color 100%
+  );
 }

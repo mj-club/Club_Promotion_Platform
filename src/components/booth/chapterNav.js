@@ -2,10 +2,77 @@ import React, { useContext, useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import PortfolioContext from "../../context/context";
 import { Link } from "react-router-dom";
+import 통해 from "../../img/icon/통해.svg"
+import 흑풍_the_BLAST from "../../img/icon/흑풍 the BLAST.svg"
+import 주리랑 from "../../img/icon/주리랑.svg"
+import 화이트홀스 from "../../img/icon/화이트홀스.svg"
+import 명지서법 from "../../img/icon/명지서법.svg"
+import Als from "../../img/icon/ALS.svg"
+import 너나들이 from "../../img/icon/너나들이.svg"
+import RCY from "../../img/icon/rcy.svg"
+import PTPI from "../../img/icon/ptpi.svg"
+import 키비탄 from "../../img/icon/키비탄.svg"
+import 나누미 from "../../img/icon/나누미.svg"
+import SK루키 from "../../img/icon/SK루키.svg"
+import PER from "../../img/icon/per.svg"
+import 인액터스 from "../../img/icon/인액터스.svg"
+import Flower from "../../img/icon/Flow_er.svg"
+import 농어민후생연구회_흙 from "../../img/icon/농어민후생연구회 흙.svg"
+import 비주얼 from "../../img/icon/비주얼.svg"
+import COA from "../../img/icon/코아.svg"
+import 디비전 from "../../img/icon/디비전.svg"
+import 포토랩 from "../../img/icon/포토랩.svg"
+import 콕콕콕 from "../../img/icon/콕콕콕.svg"
+import MJTA from "../../img/icon/MJTA.svg"
+import 바다이야기 from "../../img/icon/바다이야기.svg"
+import 무릉도원 from "../../img/icon/무릉도원.svg"
+import 나이너스 from "../../img/icon/나이너스.svg"
+import 삼박자 from "../../img/icon/삼박자.svg"
+import 굴렁쇠 from "../../img/icon/굴렁쇠.svg"
+import 파인 from "../../img/icon/파인.svg"
+import CCC from "../../img/icon/C.C.C.svg"
+import 실로암 from "../../img/icon/실로암.svg"
+import CFM from "../../img/icon/CFM.svg"
+import UBF from "../../img/icon/UBF.svg"
+
 
 const Chapternav = () => {
   const { departmentObj } = useContext(PortfolioContext);
   const { id, contains } = departmentObj;
+  const dic = {
+    "CCC": CCC,
+    "실로암": 실로암,
+    "CFM": CFM,
+    "UBF": UBF,
+    "통해": 통해,
+    "흑풍_the_BLAST": 흑풍_the_BLAST,
+    "주리랑": 주리랑,
+    "화이트홀스": 화이트홀스,
+    "Als": Als,
+    "명지서법": 명지서법,
+    "너나들이": 너나들이,
+    "RCY": RCY,
+    "PTPI": PTPI,
+    "키비탄": 키비탄,
+    "나누미": 나누미,
+    "SK루키": SK루키,
+    "PER": PER,
+    "인액터스": 인액터스,
+    "Flower": Flower,
+    "농어민후생연구회_흙": 농어민후생연구회_흙,
+    "비주얼": 비주얼,
+    "COA": COA,
+    "디비전": 디비전,
+    "포토랩": 포토랩,
+    "콕콕콕": 콕콕콕,
+    "MJTA": MJTA,
+    "바다이야기": 바다이야기,
+    "무릉도원": 무릉도원,
+    "나이너스": 나이너스,
+    "삼박자": 삼박자,
+    "굴렁쇠": 굴렁쇠,
+    "파인": 파인,
+  }
   useEffect(() => {
     function isTouch() {
       return !!(
@@ -208,25 +275,26 @@ const Chapternav = () => {
         entries.forEach(function (entry) {
           console.log(entry)
           console.log(observedItems);
-          console.log(observedItems[entry.target.innerText]);
-          observedItems[entry.target.innerText].visible = entry.isIntersecting;
+          let name = entry.target.id.replace(/\s/g, "")
+          console.log(name)
+          observedItems[name].visible = entry.isIntersecting;
           if (
-            observedItems[entry.target.textContent].index === 0 &&
+            observedItems[name].index === 0 &&
             entry.isIntersecting
           ) {
             hideShowRafCall(true, startOfList);
           } else if (
-            observedItems[entry.target.textContent].index === 0 &&
+            observedItems[name].index === 0 &&
             !entry.isIntersecting
           ) {
             hideShowRafCall(false, startOfList);
           } else if (
-            observedItems[entry.target.textContent].index === numItemsObserved() - 1 &&
+            observedItems[name].index === numItemsObserved() - 1 &&
             entry.isIntersecting
           ) {
             hideShowRafCall(true, endOfList);
           } else if (
-            observedItems[entry.target.textContent].index === numItemsObserved() - 1 &&
+            observedItems[name].index === numItemsObserved() - 1 &&
             !entry.isIntersecting
           ) {
             hideShowRafCall(false, endOfList);
@@ -310,30 +378,12 @@ const Chapternav = () => {
               const url = `/booth/${id}/${contain.key}`;
               // const url = `./${name}/${contain}`;
               return (
-                <li id={contain.key} className="chapternav-item">
+                <li id={contain.name} className="chapternav-item">
                   <a className="chapternav-link" href={url}>
                     <figure className="chapternav-icon">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="40"
-                        height="32"
-                        viewBox="0 0 40 32"
-                      >
-                        <g fill="none" fillRule="evenodd">
-                          <path
-                            fill="#206CBC"
-                            d="M13.6861477,0.522466649 C13.6861477,0.254332585 13.4712918,0.0370100467 13.2062909,0.0370100467 L2.21289349,0.0386543029 C1.94789262,0.0386543029 0.263475575,0.311480512 0.218688947,1.9139886 L0.0369032274,18.3234644 C0.0369032274,18.5915985 0.251759073,18.808921 0.516759946,18.808921 L11.6998208,18.8057929 C13.5994935,18.6969111 13.6944652,17.2230961 13.7044622,16.8571489 L13.6861477,0.522466649 L13.6861477,0.522466649 Z M11.1445066,17.8468307 L1.54833193,17.8496379 C1.32091983,17.8496379 1.28980912,17.6822848 1.28980912,17.4421833 L1.29252831,2.72043608 C1.30980315,1.26711417 2.77636524,1.0410891 3.00373735,1.0410891 L3.13593788,1.0410891 L3.13593788,8.17146605 L4.4068384,6.16218503 L5.76183381,8.17146605 L5.76183381,1.04064796 L12.4372006,1.03960526 C12.6646127,1.03960526 12.8489976,1.23426915 12.8489976,1.47433054 L12.8647129,16.1018739 C12.8561155,16.4295621 12.7930543,17.8167929 11.1445066,17.8468307 L11.1445066,17.8468307 Z"
-                            transform="translate(15.775 13.054)"
-                          />
-                          <path
-                            fill="#0C0C0C"
-                            d="M34.3369862,10.2810922 C34.3418151,10.1321129 34.3801596,9.99277821 34.3801596,9.8437168 C34.3801187,4.40757191 29.9852681,0 24.564854,0 C20.8888922,0 17.7233589,2.0523852 16.0411092,5.05167152 C15.6217336,4.97714081 15.1928229,4.9218584 14.7495075,4.9218584 C11.5336803,4.9218584 8.82819983,7.00305448 7.82657623,9.88697416 C7.6804004,9.87741157 7.53901253,9.8437168 7.38804875,9.8437168 C3.3238943,9.8437168 0.0265490844,13.1505654 0.0265490844,17.2265249 C0.0265490844,21.3024024 3.32385338,24.609292 7.38804875,24.609292 L13.4041743,24.609292 L13.4041743,22.1483833 L7.38804875,22.1483833 C4.68260923,22.1483833 2.48039595,19.9421759 2.48039595,17.2265249 C2.48039595,14.5396848 4.64185024,12.3479239 7.31135964,12.3046665 C7.42639331,12.3214934 7.546174,12.3359399 7.66603654,12.3431221 L9.53035123,12.4656709 L10.1438232,10.6992603 C10.8339433,8.71422366 12.6838941,7.38276708 14.7495075,7.38276708 C14.9891098,7.38276708 15.2527337,7.411619 15.6074106,7.47416569 L17.3255495,7.7841494 L18.1810382,6.25807575 C19.4942471,3.91737656 21.9384771,2.46094972 24.564854,2.46094972 C28.595411,2.46094972 31.8783923,5.72458201 31.9263128,9.75244131 C31.907161,9.90150272 31.8927562,10.050441 31.8879682,10.2042632 L31.8256839,12.0114686 L33.5318324,12.607468 C35.5063928,13.2972054 36.8339656,15.1548914 36.8339656,17.2265249 C36.8339656,19.9421759 34.6341258,22.1483833 31.9262719,22.1483833 L29.5277115,22.1483833 L29.5277115,24.609292 L31.9262719,24.609292 C35.9904263,24.609292 39.2877715,21.3024024 39.2877715,17.2265249 C39.2877715,14.0013482 37.2125413,11.2856561 34.3369862,10.2810922 L34.3369862,10.2810922 Z"
-                            transform="translate(.067 .005)"
-                          />
-                        </g>
-                      </svg>
+                      <img width="40" height="32" viewBox="0 0 40 32" src={dic[contain.key]}></img>
                     </figure>
-                    <span className="chapternav-label">{contain.name}</span>
+                    <span className="chapternav-label" >{contain.name}</span>
                   </a>
                 </li>
               );
