@@ -257,13 +257,62 @@ const Main = () => {
         >
           <Image src={sports} id="sports" fluid></Image>
         </Fade>
-        <Image src={religion_b} id="religionHover" fluid></Image>
-        <Image src={exhibition_b} id="exhibitionHover" fluid></Image>
-        <Image src={study_b} id="studyHover" fluid></Image>
-        <Image src={sports_b} id="sportsHover" fluid></Image>
-        <Image src={social_b} id="socialHover" fluid></Image>
-        <Image src={art_b} id="artHover" fluid></Image>
-        <Image src={volunteer_b} id="volunteerHover" fluid></Image>
+        <Fade
+          top
+          duration={2000}
+          delay={1000}
+          distance={isMobile ? "20px" : "50px"}
+        >
+          <Image src={religion_b} id="religionHover" fluid></Image>
+        </Fade>
+        <Fade
+          top
+          duration={2000}
+          delay={2200}
+          distance={isMobile ? "20px" : "50px"}
+        >
+          <Image src={exhibition_b} id="exhibitionHover" fluid></Image>
+        </Fade>
+        <Fade
+          top
+          duration={2000}
+          delay={2000}
+          distance={isMobile ? "20px" : "50px"}
+        >
+          <Image src={study_b} id="studyHover" fluid></Image>
+        </Fade>
+        <Fade
+          top
+          duration={2000}
+          delay={1200}
+          distance={isMobile ? "20px" : "50px"}
+        >
+          <Image src={sports_b} id="sportsHover" fluid></Image>
+        </Fade>
+        <Fade
+          top
+          duration={2000}
+          delay={1400}
+          distance={isMobile ? "20px" : "50px"}
+        >
+          <Image src={social_b} id="socialHover" fluid></Image>
+        </Fade>
+        <Fade
+          top
+          duration={2000}
+          delay={1800}
+          distance={isMobile ? "20px" : "50px"}
+        >
+          <Image src={art_b} id="artHover" fluid></Image>
+        </Fade>
+        <Fade
+          top
+          duration={2000}
+          delay={1600}
+          distance={isMobile ? "20px" : "50px"}
+        >
+          <Image src={volunteer_b} id="volunteerHover" fluid></Image>
+        </Fade>
       </div>
     </>
   );
