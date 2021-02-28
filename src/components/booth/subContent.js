@@ -6,7 +6,7 @@ import PortfolioContext from "../../context/context";
 import Navbar from "react-bootstrap/Navbar";
 const SubContent = () => {
   const { departmentObj } = useContext(PortfolioContext);
-  const { name, brief_introduction, key } = departmentObj;
+  const { name, brief_introduction, key, contains, id } = departmentObj;
   console.log(departmentObj);
   const [isDesktop, setIsDesktop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -47,13 +47,27 @@ const SubContent = () => {
             delay={1000}
             distance="30px"
           >
-            <p className="hero-cta">
+            {contains.map((contain) => {
+              const url = `/booth/${id}/${contain.key}`;
+              return (
+                <a
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`cta-btn text-color-main ${key} hashtag`}
+                href={url}
+              >
+                {"#"}{contain.name}
+              </a>
+              )
+            })}
+
+            {/* <p className="hero-cta">
               <span className={`cta-btn cta-btn--hero ${key}`}>
                 <Link to="about" smooth duration={1000}>
                   {"더 알아보기"}
                 </Link>
               </span>
-            </p>
+            </p> */}
           </Fade>
         </Container>
       )}
