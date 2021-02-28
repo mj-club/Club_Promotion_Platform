@@ -54,7 +54,7 @@ const Projects = () => {
                 <div className="project-wrapper__text">
                   <h3 className="project-wrapper__text-title">{""}</h3>
                   <div id="contentBound">
-                    <p>
+                    <p id="information-text">
                       {recruitment.map((line, i) => (
                         <span key={i}>
                           <span>{line}</span> <br />

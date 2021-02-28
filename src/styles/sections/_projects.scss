@@ -26,7 +26,8 @@
 
     &__text {
       text-align: left;
-
+      // font-size: 1.8rem;
+      line-height: 1.5;
       @include respond(phone) {
         margin-bottom: 2.5rem !important;
       }
@@ -73,5 +74,12 @@
         }
       }
     }
+  }
+}
+
+#information-text {
+  font-size: 1.8rem;
+  @include respond(phone) {
+    font-size: 1.6rem;
   }
 }
