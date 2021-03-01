@@ -25,9 +25,23 @@ import PortfolioContext from "context/context";
 // ];
 
 const useStyles = makeStyles((theme) => ({}));
-const loadImg = async (club) => {
+// const loadImg = async (club) => {
+//   const urls = [];
+//   const arr = await storageService.ref().child("COA").listAll();
+
+//   for (let i = 0; i < arr.items.length; i++) {
+//     let url = await arr.items[i].getDownloadURL();
+//     urls.push(url);
+//   }
+//   return urls;
+// };
+const loadFiles = async (clubName, fileType) => {
   const urls = [];
-  const arr = await storageService.ref().child("COA").listAll();
+  const arr = await storageService
+    .ref()
+    .child(clubName)
+    .child(fileType)
+    .listAll();
 
   for (let i = 0; i < arr.items.length; i++) {
     let url = await arr.items[i].getDownloadURL();
@@ -35,7 +49,6 @@ const loadImg = async (club) => {
   }
   return urls;
 };
-
 // const loading = async () => {
 //   const clubsRef = dbService.collection("clubs").doc("COA");
 //   let clubObj = await (await clubsRef.get()).data();
@@ -49,28 +62,34 @@ const loading = async (name, type) => {
 };
 const Booth = () => {
   const { match, departmentObj } = useContext(PortfolioContext);
-  const {key} = departmentObj
+  const { key } = departmentObj;
   console.log(match.params.club);
   // const { name } = clubObj;
   const classes = useStyles();
-  const [urls, setUrls] = useState([]);
+  const [posters, setPosters] = useState([]);
+  const [activities, setActivities] = useState([]);
   const [clubObj, setClubObj] = useState(undefined);
   let obj;
   let images;
+  let activityTemp;
   useEffect(async () => {
     obj = await loading(match.params.club, "clubs");
     if (clubObj === undefined || clubObj.name !== obj.name) {
       setClubObj(obj);
       console.log(obj);
     }
-    images = await loadImg();
-    if (urls === undefined || urls[0] !== images[0]) {
-      setUrls(images);
+    images = await loadFiles(match.params.club, "poster");
+    if (posters === undefined || posters[0] !== images[0]) {
+      setPosters(images);
+    }
+    activityTemp = await loadFiles(match.params.club, "activity");
+    if (activities === undefined || activities[0] !== activityTemp[0]) {
+      setActivities(activityTemp);
     }
   });
 
   return clubObj !== undefined ? (
-    <PortfolioProvider value={{ clubObj, urls, key }}>
+    <PortfolioProvider value={{ clubObj, posters, activities, key }}>
       <Hero />
       <Introduce />
       <Projects />

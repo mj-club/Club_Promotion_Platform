@@ -33,7 +33,9 @@ const SubContent = () => {
             distance="30px"
           >
             <h1 className="hero-title">
-              <span className={`text-color-main ${key}`}>{departmentObj.name}</span>
+              <span className={`text-color-main ${key}`}>
+                {departmentObj.name}
+              </span>
               <br />
               {/* {brief_introduction} */}
               {/* <span className="brief">저는 열정있는 개발자입니다.</span> */}
@@ -51,14 +53,14 @@ const SubContent = () => {
               const url = `/booth/${id}/${contain.key}`;
               return (
                 <a
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`cta-btn text-color-main ${key} hashtag`}
-                href={url}
-              >
-                {"#"}{contain.name}
-              </a>
-              )
+                  rel="noopener noreferrer"
+                  className={`cta-btn text-color-main ${key} hashtag`}
+                  href={url}
+                >
+                  {"#"}
+                  {contain.name}
+                </a>
+              );
             })}
 
             {/* <p className="hero-cta">
