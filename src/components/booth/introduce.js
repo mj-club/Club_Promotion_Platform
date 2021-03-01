@@ -7,20 +7,25 @@ import PortfolioContext from "../../context/context";
 import { makeStyles } from "@material-ui/core";
 import imageFile from "img/main.jpg";
 import { Grid, IconButton } from "@material-ui/core";
+import { ShowimgCarosel } from "components/booth/carousel";
+
 const useStyles = makeStyles({
-  // testImg: {
-  //   width: "80vw",
-  //   // margin: "5%",
-  //   // minHeight: "100vh",
-  // },
+  imgDiv: {
+    display: "flex",
+    justifyContent: "center",
+    height: "20vh",
+    width: "20vw",
+    // margin: "5%",
+    // minHeight: "100vh",
+  },
 });
 
 const About = () => {
   const classes = useStyles();
-  const { urls, clubObj, key } = useContext(PortfolioContext);
+  const { activities, clubObj, key } = useContext(PortfolioContext);
   const { facebook, instargram, openchat } = clubObj.contact_us;
   const instargramUrl = `https://www.instagram.com/${instargram}/`;
-  const showData = urls[0];
+  const showData = activities[0];
   const introduction = clubObj.introduction;
 
   const [isDesktop, setIsDesktop] = useState(false);
@@ -43,9 +48,10 @@ const About = () => {
         <Row className="about-wrapper">
           <Col md={6} sm={12}>
             <Fade bottom duration={1000} delay={600} distance="30px">
-              <div className="about-wrapper__image">
+              <div className={["about-wrapper__image", classes.imgDiv].join}>
                 {/* <AboutImg alt="profile picture" filename={showData} /> */}
-                <Image id="show" src={showData} fluid />
+                {/* <Image id="show" src={showData} fluid /> */}
+                <ShowimgCarosel urls={activities}></ShowimgCarosel>
                 {/* <Image id="show" src={imageFile} fluid /> */}
               </div>
             </Fade>
@@ -60,7 +66,11 @@ const About = () => {
             >
               <div className="about-wrapper__info">
                 <p className="about-wrapper__info-text introduce_content">
-                  {introduction}
+                  {introduction.map((line, i) => (
+                    <span key={i}>
+                      <span>{line}</span> <br />
+                    </span>
+                  ))}
                 </p>
                 {/* <p className="about-wrapper__info-text">
                   {
