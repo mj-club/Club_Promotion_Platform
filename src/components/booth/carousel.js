@@ -118,17 +118,67 @@ export const ShowingGridList = ({ urls }) => {
   );
 };
 
-export const ShowimgCarosel = ({ urls }) => {
+export const ShowimgCarosel = ({ urls, height }) => {
+  const classes = useStyles();
+
+  const [open, setOpen] = useState(false);
+  const [targetUrl, setTargetUrl] = useState("");
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const handleOpen = (e) => {
+    setTargetUrl(e.target.src);
+    console.log(targetUrl);
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+  useEffect(() => {
+    console.log("render");
+    if (window.innerWidth > 769) {
+      setIsDesktop(true);
+      setIsMobile(false);
+    } else {
+      setIsMobile(true);
+      setIsDesktop(false);
+    }
+  }, [targetUrl]);
   return (
-    <Carousel>
-      {urls.map((url) => {
-        return (
-          <Carousel.Item>
-            <img className="d-block w-100" src={url} alt="First slide" />
-            <Carousel.Caption></Carousel.Caption>
-          </Carousel.Item>
-        );
-      })}
-    </Carousel>
+    <>
+      <Carousel>
+        {urls.map((url, i) => {
+          return (
+            <Carousel.Item key={i}>
+              <div style={{ height: "40vh" }}>
+                <img
+                  className="d-block w-100"
+                  src={url}
+                  // height={height}
+                  alt="First slide"
+                  onClick={handleOpen}
+                />
+                <Carousel.Caption></Carousel.Caption>
+              </div>
+            </Carousel.Item>
+          );
+        })}
+      </Carousel>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+      >
+        {/* <img src={url} alt={url} className={classes.modalImg} /> */}
+        {/* style={modalStyle} */}
+        <div className={classes.modalDiv}>
+          <img
+            src={targetUrl}
+            alt={targetUrl}
+            className={isMobile ? classes.modalImgMobile : classes.modalImgPC}
+          />
+        </div>
+      </Modal>
+    </>
   );
 };
