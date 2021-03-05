@@ -1,12 +1,42 @@
-import React, { useContext, useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
+import React, { useContext, useState, useEffect,  } from "react";
+import { Container, Col,Image } from "react-bootstrap";
+import { makeStyles } from "@material-ui/core";
 import Fade from "react-reveal/Fade";
 import { Link } from "react-scroll";
 import PortfolioContext from "../../context/context";
 import Navbar from "react-bootstrap/Navbar";
+import pink from "img/pink.png"
+import purple from "img/purple.png"
+import yellowgreen from "img/yellowgreen.png"
+import mint from "img/mint.png"
+import red from "img/red.png"
+import blue from "img/blue.png"
+import orange from "img/orange.png"
+const search = {
+  pink: pink,
+  purple: purple,
+  yellowgreen: yellowgreen,
+  mint: mint,
+  red: red,
+  blue: blue,
+  orange: orange,
+  
+};
+
+const useStyles = makeStyles({
+  charactorDiv: {
+    display: "flex",
+    width: "100%",
+    height: "100%",
+    justifyContent: "flex-end",
+
+  }
+});
 const SubContent = () => {
+  const classes = useStyles()
   const { departmentObj } = useContext(PortfolioContext);
-  const { name, brief_introduction, key, contains, id } = departmentObj;
+  const { name, brief_introduction, key, contains, id, hashtag, information, charactor } = departmentObj;
+
   console.log(departmentObj);
   const [isDesktop, setIsDesktop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -25,6 +55,7 @@ const SubContent = () => {
     <section id="hero" className="jumbotron">
       {departmentObj && (
         <Container fluid>
+          
           <Fade
             left={isDesktop}
             bottom={isMobile}
@@ -62,6 +93,20 @@ const SubContent = () => {
                 </a>
               );
             })}
+            {hashtag ? hashtag.map((tag) => {
+              return (
+              <a
+                rel="noopener noreferrer"
+                target="_blank"
+                className={`cta-btn text-color-main ${key} hashtag`}
+                href={tag.key}
+              >
+                {"#"}
+                {tag.name}
+            </a>
+              )
+            }) : <></>
+            } 
 
             {/* <p className="hero-cta">
               <span className={`cta-btn cta-btn--hero ${key}`}>
@@ -71,6 +116,14 @@ const SubContent = () => {
               </span>
             </p> */}
           </Fade>
+          {/* <Fade
+            right={isDesktop}
+            bottom={isMobile}
+            duration={1000}
+            delay={1000}
+            distance="30px"
+          ><div className={classes.charactorDiv}><Image src={search[charactor]}></Image></div></Fade> */}
+          <div id="caution">※{information}</div>
         </Container>
       )}
     </section>

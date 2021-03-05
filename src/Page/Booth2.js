@@ -8,7 +8,11 @@ import Introduce from "components/booth/introduce";
 import Contact from "components/booth/contact";
 import Footer from "components/booth/footer";
 import Projects from "components/booth/infomation";
+import Content from "components/booth/content";
 import Chapternav from "components/booth/chapterNav";
+import Photozone from "components/booth/photoZone";
+import Slidezone from "components/booth/slideZone";
+import Slidemobile from "components/booth/slideMobile";
 import Navbar from "react-bootstrap/Navbar";
 import BoothBar from "components/booth/appBar";
 import PortfolioContext from "context/context";
@@ -63,37 +67,75 @@ const loading = async (name, type) => {
 const Booth = () => {
   const { match, departmentObj } = useContext(PortfolioContext);
   const { key } = departmentObj;
-  console.log(match.params.club);
+  const { name } = departmentObj;
   // const { name } = clubObj;
   const classes = useStyles();
   const [posters, setPosters] = useState([]);
   const [activities, setActivities] = useState([]);
+  const [contentVideo, setContentVideo] = useState([]);
+  const [contentPhoto, setContentPhoto] = useState([]);
   const [clubObj, setClubObj] = useState(undefined);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
   let obj;
   let images;
   let activityTemp;
+  let contentVideoTemp;
+  let contentPhotoTemp;
   useEffect(async () => {
+    if (window.innerWidth > 769) {
+      setIsDesktop(true);
+      setIsMobile(false);
+    } else {
+      setIsMobile(true);
+      setIsDesktop(false);
+    }
     obj = await loading(match.params.club, "clubs");
     if (clubObj === undefined || clubObj.name !== obj.name) {
       setClubObj(obj);
-      console.log(obj);
     }
     images = await loadFiles(match.params.club, "poster");
     if (posters === undefined || posters[0] !== images[0]) {
       setPosters(images);
     }
     activityTemp = await loadFiles(match.params.club, "activity");
-    if (activities === undefined || activities[0] !== activityTemp[0]) {
-      setActivities(activityTemp);
+    if(activities !== undefined) { 
+      if (activities === [] || activities[0] !== activityTemp[0]) {
+        setActivities(activityTemp);
+      }
+    }
+    contentVideoTemp = await loadFiles(match.params.club, "content_video");
+    // console.log("videoTemp",contentVideoTemp)
+    if(contentVideo !== undefined) {
+      if (contentVideo === [] || contentVideo[0] !== contentVideoTemp[0]) {
+        setContentVideo(contentVideoTemp);
+      }
+    }
+    contentPhotoTemp = await loadFiles(match.params.club, "content_photo");
+    // console.log("phototemp",contentPhotoTemp)
+    if(contentPhoto !== undefined) {
+      if (contentPhoto === [] || contentPhoto[0] !== contentPhotoTemp[0]) {
+        setContentPhoto(contentPhotoTemp)
+      }
     }
   });
 
   return clubObj !== undefined ? (
-    <PortfolioProvider value={{ clubObj, posters, activities, key }}>
+    <PortfolioProvider value={{ clubObj, posters, activities, contentVideo, contentPhoto, key, name }}>
       <Hero />
       <Introduce />
-      <Projects />
-      <Contact />
+      {/* {console.log(contentVideo)} */}
+      {console.log(contentVideo)}
+      {contentVideo.length !== 0  ?<Content />: <></>}
+      {/* <Photozone /> */}
+      {/* {console.log("photo",contentPhoto)} */}
+      {contentPhoto.length !== 0 ? 
+      (isMobile ? <Slidemobile /> : <Slidezone />)
+      :
+      <></>}
+      {clubObj.recruitment !== undefined ?<Projects />:<></>}
+      {clubObj.how_to_join !== undefined ?<Contact />:<></>}
       <Footer />
     </PortfolioProvider>
   ) : (

@@ -7,6 +7,8 @@
   // );
   color: $white-color;
   height: 100%;
+  // height: 90vh;
+  min-height: 80vh;
   border-top: 0px;
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
@@ -26,6 +28,7 @@
     &__image {
       display: flex;
       height: 100%;
+      // height: 70vh;
       align-items: center;
       justify-content: center;
     }
@@ -35,51 +38,52 @@
     @include respond(tab-land) {
       height: 100%;
     }
-  
 
-  &__info {
-    margin-top: 11px;
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    flex-direction: column;
+    &__info {
+      margin-top: 11px;
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      flex-direction: column;
+      
 
-    @include respond(phone) {
-      align-items: center;
-    }
-
-    &-text {
-      text-align: left;
-      font-size: 1.8rem;
-      line-height: 1.5;
-      @include respond(tab-port) {
-        font-size: 1.5rem;
-        text-align: left;
-      }
       @include respond(phone) {
-        font-size: 1.6rem;
-        text-align: left;
+        align-items: center;
+        
       }
 
-      &--important {
-        background: darken($secondary-color, 1%);
-        display: inline-block;
-        font-style: italic;
-        padding: 0 0.3rem;
-        margin: 0.3rem 0;
-        line-height: 1.6;
-
+      &-text {
+        text-align: left;
+        font-size: 1.8rem;
+        line-height: 1.5;
+        @include respond(tab-port) {
+          font-size: 1.5rem;
+          text-align: left;
+        }
         @include respond(phone) {
-          display: inline;
-          margin: 0;
-          padding: 0;
-          background: transparent;
-          font-style: normal;
+          font-size: 1.6rem;
+          text-align: left;
+        }
+
+        &--important {
+          background: darken($secondary-color, 1%);
+          display: inline-block;
+          font-style: italic;
+          padding: 0 0.3rem;
+          margin: 0.3rem 0;
+          line-height: 1.6;
+
+          @include respond(phone) {
+            display: inline;
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            font-style: normal;
+          }
         }
       }
     }
   }
-}
 }
 @include respond(phone) {
   display: inline;
@@ -89,7 +93,7 @@
   font-style: normal;
 }
 
-#about.volunteer{
+#about.volunteer {
   background-color: $volunteer-primary-color;
   background-image: linear-gradient(
     135deg,
@@ -144,4 +148,15 @@
     $study-primary-color 0%,
     $study-secondary-color 100%
   );
+}
+#about.chongdongyeon {
+  background-color: $chongdongyeon-primary-color;
+  background-image: linear-gradient(
+    135deg,
+    $chongdongyeon-primary-color 0%,
+    $chongdongyeon-secondary-color 100%
+  );
+}
+.introduce_content {
+  width: 100%;
 }

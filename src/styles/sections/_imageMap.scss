@@ -63,10 +63,35 @@
   // opacity: 0.3;
   @include respond(phone) {
     // height: 50vh;
-    top: 20vh;
-    left: 10vw;
+    top: 18vh;
+    left: 0%
+    // left: 2vw;
   }
+}
+#art-btn {
+  top: -8vh;
+  left: 5vw;
+  @include respond(phone) {
+    // height: 50vh;
+    // top: 18vh;
+    top: auto;
+    left: 6vw;
   }
+}
+#chondongyeon {
+  position: absolute;
+  top: 13vh;
+  left: 2%;
+  width: 98%;
+  z-index: 3;
+  height: 82vh;
+  @include respond(phone) {
+    height: 50vh;
+    width: 90%;
+    top: 47vh;
+    left: -4%;
+  }
+}
 #social {
   position: absolute;
   top: 18vh;
@@ -105,12 +130,21 @@
   z-index: 2; 
   @include respond(phone) {
     position: absolute;
-    top: 30vh;
-    left: 10vw;
+    top: 38vh;
+    left: auto;
+    right:0%;
   }
 
 }
-
+#social-btn {
+  top: -6vh;
+  left: 5vw;
+  @include respond(phone) {
+    top: auto;
+    left: auto;
+    right: 6vw;
+  }
+}
 .Button {
   background: transparent;
   border: 0;
@@ -171,6 +205,17 @@
   
 }
 
+.mobile-btn {
+  position: absolute;
+  height: 13vh;
+  visibility: hidden;
+  // visibility: visible;
+  @include respond(phone) {
+    visibility: visible;
+    width:  45vw;
+  }
+}
+
 #exhibition {
   position: absolute;
   top: 20vh;
@@ -209,8 +254,18 @@
   z-index: 2; 
   @include respond(phone) {
     position: absolute;
-    top: 30vh;
-    left: 50vw;
+    top: 28vh;
+    left: auto;
+    right: 0%
+  }
+}
+#exhibition-btn {
+  top: -3vh;
+  left: -1vw;
+  @include respond(phone) {
+    top: auto;
+  left: auto;
+    right: 6vw;
   }
 }
 #study {
@@ -242,6 +297,14 @@
     left: 6%;
   }
 }
+#study-btn {
+  top: 3vh;
+  left: 7vw;
+  @include respond(phone) {
+    top: auto;
+    left: 6vw;
+  }
+}
 #studyLink {
   position: absolute;
   left: 59.5%; 
@@ -251,8 +314,8 @@
   z-index: 2; 
   @include respond(phone) {
     position: absolute;
-    top: 50vh;
-    left: 10vw;
+    top: 48vh;
+    left: 0%;
   }
 }
 #sports {
@@ -293,8 +356,16 @@
   z-index: 2; 
   @include respond(phone) {
     position: absolute;
-    top: 40vh;
-    left: 10vw;
+    top: 38vh;
+    left: 0%;
+  }
+}
+#sports-btn {
+  top: -5vh;
+  left: 10vw;
+  @include respond(phone) {
+    top: 0vh;
+    left: 6vw;
   }
 }
 #volunteer {
@@ -335,11 +406,22 @@
   z-index: 2; 
   @include respond(phone) {
     position: absolute;
-    top: 20vh;
-    left: 50vw;
+    top: 18vh;
+    right: 0%;
+    left: auto
+    // right: 10vw;
   }
-
 }
+#volunteer-btn {
+  top: -8vh;
+  left: 2vw;
+  @include respond(phone) {
+    top: 0vh;
+    left: auto;
+    right: 6vw;
+  }
+}
+
 #religion {
   position: absolute;
   top: 20vh;
@@ -378,10 +460,19 @@
   z-index: 2;
   @include respond(phone) {
     position: absolute;
-    top: 40vh;
-    left: 50vw;
+    top: 28vh;
+    left: 0%;
   }
 }
+#religion-btn {
+  top: -5vh;
+  left: 5vw;
+  @include respond(phone) {
+    top: auto;
+    left: 6vw;
+  }
+}
+
 
 #chongdonyeonLink {
   position: absolute;
@@ -392,8 +483,13 @@
   z-index: 2;
   @include respond(phone) {
     position: absolute;
-    top: 50vh;
-    left: 50vw;
+    top: 48vh;
+    right: 0%;
+  }
+}
+#chongdongyeon-btn {
+  @include respond(phone) {
+    right: 6vw;
   }
 }
 
@@ -429,7 +525,7 @@
   @include respond(phone) {
     height: auto;
     width: 100%;
-    top: 10vh;
+    top: 1vh;
     left: 0%;
   }
 }

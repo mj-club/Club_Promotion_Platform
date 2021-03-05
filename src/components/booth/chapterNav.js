@@ -34,6 +34,10 @@ import CCC from "../../img/icon/C.C.C.svg"
 import 실로암 from "../../img/icon/실로암.svg"
 import CFM from "../../img/icon/CFM.svg"
 import UBF from "../../img/icon/UBF.svg"
+import TIME from "../../img/icon/TIME.svg"
+import 대건안드레아 from "../../img/icon/대건안드레아.svg"
+import 스카우트 from "../../img/icon/스카우트.svg"
+import FC명지 from "../../img/icon/FC명지.svg"
 
 
 const Chapternav = () => {
@@ -72,6 +76,10 @@ const Chapternav = () => {
     "삼박자": 삼박자,
     "굴렁쇠": 굴렁쇠,
     "파인": 파인,
+    "TIME": TIME,
+    "대건안드레아": 대건안드레아,
+    "스카우트": 스카우트,
+    "FC명지": FC명지
   }
   useEffect(() => {
     function isTouch() {
