@@ -81,15 +81,10 @@ const Sub = ({ match }) => {
 
   return departmentObj !== undefined ? (
     <>
-    <PortfolioProvider value={{ sections, departmentObj, match }}>
-      <Image src={TestBg} style={{position: "fixed",width: "100vw", height: "100vh", opacity: "0.5", zIndex: "-0"}}/>
-      <BoothBar />
 
-      {/* <Hero />
-      <Introduce />
-      <Projects />
-      <Contact />
-    <Footer /> */}
+    <PortfolioProvider value={{ sections, departmentObj, match }}>
+      <Image src={TestBg} style={{position: "fixed",width: "100%", height: "100vh", opacity: "0.5", zIndex: "0"}}/>
+      <BoothBar />
       <CdyHero />
       <CdyGuide />
       <EventAnnounce />

@@ -94,4 +94,27 @@
     $chongdongyeon-primary-color 0%,
     $chongdongyeon-secondary-color 100%
   );
+  z-index: 3;
+}
+
+#a {
+  position: relative;
+
+}
+
+#upLink {
+  position: absolute;
+  left: 48%;
+  top: 3vh;
+  @include respond(phone) {
+    left: 45%;
+  }
+}
+
+#upIcon {
+  font-size: 3vw;
+  @include respond(phone) {
+    font-size: 10vw;
+  }
+
 }

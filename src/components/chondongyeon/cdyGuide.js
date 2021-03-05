@@ -4,6 +4,8 @@ import { Container, Row, Col } from 'react-bootstrap';
 import Title from "components/booth/title";
 // import AboutImg from '../Image/AboutImg';
 import PortfolioContext from '../../context/context';
+import Quiz from "components/chondongyeon/quiz"
+import QuizTwo from "components/chondongyeon/quiz2"
 
 const About = () => {
   const { departmentObj } = useContext(PortfolioContext);
@@ -25,12 +27,13 @@ const About = () => {
   return (
     <section id="about" className={key}>
       <Container>
-        <Title title="About Me" />
-        <Row className="about-wrapper">
+        <Title title="QUEST" />
+        {/* <Quiz /> */}
+        <QuizTwo />
+        {/* <Row className="about-wrapper">
           <Col md={6} sm={12}>
             <Fade bottom duration={1000} delay={600} distance="30px">
               <div className="about-wrapper__image">
-                {/* <AboutImg alt="profile picture" filename={img} /> */}
               </div>
             </Fade>
           </Col>
@@ -42,23 +45,13 @@ const About = () => {
                   <span><span>{line}</span><br></br></span>
                 ))}
                 </p>
-                {/* {resume && (
-                  <span className="d-flex mt-3">
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="cta-btn cta-btn--resume"
-                      href={resume}
-                    >
-                      github
-                    </a>
-                  </span>
-                )} */}
+                
               </div>
             </Fade>
           </Col>
-        </Row>
+        </Row> */}
       </Container>
+      
     </section>
   );
 };

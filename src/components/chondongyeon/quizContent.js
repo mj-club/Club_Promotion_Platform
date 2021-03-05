@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -6,6 +6,8 @@ import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import {Button} from '@material-ui/core'
+import PortfolioContext from '../../context/context';
+import Title from "components/booth/title";
 const useStyles = makeStyles((theme) => ({
   border: {
     fontFamily: `"Roboto", "Helvetica", "Arial", sans-serif`,
@@ -16,9 +18,47 @@ const useStyles = makeStyles((theme) => ({
     height: "50%"
   },
 }))
+
+
 export default function AddressForm() {
   const classes = useStyles();
-  return (
+  const { departmentObj } = useContext(PortfolioContext);
+  const { quiz } = departmentObj;
+  console.log(quiz)
+  const [localAns , setLocalAns] = useState(JSON.parse(localStorage.getItem('quizAnswer')))
+  console.log(localAns)
+  const date = new Date()
+
+  console.log(date.getMonth(), date.getDate())
+  const [pass, setPass] = useState(quiz[0].a == localAns[0])
+  const checkAnswer = (e)=>{
+    const ans = document.getElementById("answer")
+    const btn = document.getElementById("submitAnser")
+    if(ans.value == quiz[0].a) {
+      ans.readOnly = true
+      ans.value = quiz[0].a
+      ans.parentElement.style.backgroundColor =" rgba(0, 0, 0, 0.09)"
+      btn.style.backgroundColor = "rgb(220, 0, 78)"
+      btn.firstChild.innerText = "정답!"
+      let arr = localAns
+      arr[0] = quiz[0].a
+      localStorage.setItem('quizAnswer',JSON.stringify(arr))
+    }
+  }
+  useEffect(()=>{
+    if(localAns === null) {
+      const init = ['','','','','','','']
+      localStorage.setItem('quizAnswer',JSON.stringify(init))
+      setLocalAns(JSON.parse(localStorage.getItem('quizAnswer')))
+    }
+    // if (pass) {
+    //   const ans = document.getElementById("answer")
+    //   ans.value = quiz[0].a
+    //   const btn = document.getElementById("submitAnser")
+    //   btn.click()
+    // }
+  },[])
+  return(
     <React.Fragment>
       <Typography variant="h6" gutterBottom  >
         차원의 도서관
@@ -26,16 +66,14 @@ export default function AddressForm() {
       <Grid container spacing={3}>
       <Grid item xs={12} sm={12}>
         <div>
-          차원의 도서관에는 여러 숨겨진 보물과 유물에 대해 연구하는 학자들이 많지!!<br />
-          고대 유물에 대한 서적은 대부분 영어로 적혀있네<br />
-          도서관에서 영어 학술 동아리를 알아보게!!
+          {quiz[0].q.map((line)=>{return(<span><span>{line}</span><br></br></span>)})}
         </div>
       </Grid>
       <Grid item xs={12} sm={6}>
           <TextField
             required
-            id="firstAnswer"
-            name="firstAnswer"
+            id="answer"
+            name="answer"
             label="동아리 이름"
             fullWidth
             autoComplete="given-name"
@@ -45,7 +83,9 @@ export default function AddressForm() {
           variant="contained"
           color="primary"
           // onClick={handleNext}
+          id="submitAnser"
           className={classes.button}
+          onClick={checkAnswer}
         >
                     입력
                   </Button>
@@ -129,5 +169,6 @@ export default function AddressForm() {
         </Grid> */}
       </Grid>
     </React.Fragment>
-  );
+  )
+  // :(<Grid container style={{display:"flex", justifyContent:"center", textAlign : "center"}}><Title title="coming soon" /></Grid>);
 }

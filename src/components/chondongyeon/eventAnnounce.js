@@ -33,7 +33,7 @@ const Projects = () => {
           <Title title="이벤트 소개" />
 
               <Row >
-      <Paper elevation={3} style={{ display:'flex', justifyContent: "center", backgroundColor: "white", zIndex: "5", width: "45vw", padding: "5% 0"}}>
+              {/* <Paper className="cdyEvent" elevation={3}> */}
 
                 <Col lg={8} sm={12}>
                   <Fade
@@ -54,7 +54,7 @@ const Projects = () => {
                       
                     </div>
                   </Fade>
-                </Col></Paper>
+                </Col>
                 <Col lg={4} sm={12}>
                   <Fade
                     right={isDesktop}

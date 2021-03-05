@@ -4,6 +4,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import PortfolioContext from "../../context/context";
 import Title from "components/booth/title";
 import { Grid, IconButton } from "@material-ui/core";
+import { Link } from 'react-scroll';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 function checkMobile() { var varUA = navigator.userAgent.toLowerCase(); //userAgent 값 얻기 
   if (varUA.indexOf('android') > -1) { // 안드로이드 
     return "android"; } else if (varUA.indexOf('iphone') > -1 || varUA.indexOf('ipad') > -1 || varUA.indexOf('ipod') > -1 || varUA.indexOf('ios')) { // IOS
@@ -115,7 +117,13 @@ const Contact = () => {
                       </Row>
                     </Container>
           </div>
+          <div id="a">
+        <Link to={isMobile ? "topNav" : "pcTopNav"} id="upLink" smooth duration={1000} >
+            <ArrowUpwardIcon id="upIcon" />
+          </Link>
+          </div>
         </Fade>
+  
       </Container>
     </section>
   );
