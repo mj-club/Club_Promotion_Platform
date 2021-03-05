@@ -32,7 +32,7 @@
     font-weight: 700;
     margin-bottom: 3.2rem;
     text-align: left;
-
+    line-height: 1;
     @include respond(tab-land) {
       font-size: 4rem;
     }
@@ -42,7 +42,7 @@
     }
     @include respond(phone) {
       font-size: 3rem;
-      line-height: 1.5;
+      line-height: 1.3;
     }
     @include respond(phone-xs) {
       font-size: 2.5rem;
@@ -50,20 +50,20 @@
   }
 
   .brief {
-    font-size: 5.6rem;
+    font-size: 3rem;
     font-weight: 600;
     margin-bottom: 3.2rem;
     text-align: left;
 
     @include respond(tab-land) {
-      font-size: 4rem;
+      font-size: 2.5rem;
     }
     @include respond(tab-port) {
-      font-size: 3.6rem;
+      font-size: 2.5rem;
       text-align: center;
     }
     @include respond(phone) {
-      font-size: 2.5rem;
+      font-size: 2rem;
       line-height: 1.5;
     }
     @include respond(phone-xs) {
@@ -155,7 +155,6 @@
     $exhibition-secondary-color 100%
   );
 }
-
 .pcTopNav.social {
   background-color: $social-primary-color;
   background-image: linear-gradient(
@@ -212,7 +211,14 @@
     $exhibition-secondary-color 100%
   );
 }
-
+.pcTopNav.chongdongyeon {
+  background-color: $chongdongyeon-primary-color;
+  background-image: linear-gradient(
+    135deg,
+    $chongdongyeon-primary-color 0%,
+    $chongdongyeon-secondary-color 100%
+  );
+}
 .hashtag {
   font-size: 20px;
 
@@ -224,4 +230,15 @@
   //   font-size: 20px;
   // }
 
+}
+
+#caution {
+  position: fixed;
+  right: 2%;
+  bottom: 5%;
+  @include respond(phone) {
+    right: 3%;
+    left: 3%;
+    font-size: 5px
+  }
 }

@@ -8,7 +8,7 @@ const Footer = () => {
   // const { networks } = footer;
 
   return (
-    <footer className="footer navbar-static-bottom">
+    <footer className="footer navbar-static-bottom" >
       <Container>
         <span className="back-to-top">
           <Link to="hero" smooth duration={1000}>
@@ -33,14 +33,15 @@ const Footer = () => {
             })} */}
         </div>
         <hr />
-        <p className="footer__text">
+        <p className="footer__text" style={{display: "flex", justifyContent:"center"}}>
           {/* © {new Date().getFullYear()} - Template developed by{" "}
           <a
             href="https://github.com/cobidev"
             target="_blank"
             rel="noopener noreferrer"
           > */}
-          명지대학교 인문캠퍼스 총동아리연합회 <br></br>비대위원장 양성훈
+          명지대학교 인문캠퍼스 총동아리연합회 <br></br>
+          비대상대책위원장 양성훈
           {/* </a> */}
         </p>
       </Container>

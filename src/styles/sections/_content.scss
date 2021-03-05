@@ -1,0 +1,177 @@
+@font-face {
+  font-family: 'LAB디지털';
+  src: url('../fonts/LAB디지털.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+#tv {
+  position: absolute;
+  // top: 18vh;
+  left: 5%;
+  width: 90%;
+  z-index: 1;
+  height: 80vh;
+  @include respond(phone) {
+    left: 5%;
+    width: 95%;
+    height: 100%;
+  }
+}
+#off {
+  position: absolute;
+  top: 25.8%;
+  left: 13.2%;
+  z-index: -1;
+  height: 56%;
+  width: 67%;
+}
+#player {
+  position: absolute;
+  top: 25%;
+  left: 10.1%;
+  z-index: 3;
+  height: 50%;
+  width: 100%;
+  @include respond(phone) {
+    left: 10.7%;
+    top: 21.8%;
+  }
+}
+
+#tv-controller {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  height: 40%;
+  left: -20%;
+  width: 100%;
+  @include respond(phone) {
+    top: -30%;
+    left: 5%;
+    width:95%;
+    height: 100%;
+  }
+}
+.content-wrapper {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  // display: flex;
+  // justify-content: center;
+  // .overlap {
+  //   position: absolute;
+  // }
+  
+}
+.controller-div {
+  @include respond(phone) {
+    width: 100%;
+    height: 40vh;
+  }
+}
+.tv-div {
+  @include respond(phone) {
+    width: 100%;
+    height: 45vh;
+  }
+}
+
+#content {
+  background-color: $white-color;
+  color: $dark-blue-text;
+  width:100%;
+  @include respond(phone) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+#show-channel {
+  position: absolute;
+  text-align: center;
+  align-items: center;
+  font-size: 2em;
+  font-weight: 900;
+  top: 53.5%;
+  left: 20%;
+  z-index: 5;
+  // background-color: yellow;
+  // opacity: 0.5;
+  width: 20%;
+  height: 5%;
+  font-family: 'LAB디지털';
+  @include respond(phone) {
+    font-size: 5em;
+    font-weight:100;
+    top: 8%;
+    left: 18%;
+    // background-color: yellow;
+    // opacity: 0.5;
+    width: 10%;
+    height: 24%;
+    
+  }
+}
+#off-btn {
+  position: absolute;
+  top: 59%;
+  left: 20%;
+  z-index: 5;
+  // background-color: yellow;
+  // opacity: 0.5;
+  width: 20%;
+  height: 10%;
+  @include respond(phone) {
+    top: 8%;
+    left: 30%;
+    // background-color: yellow;
+    // opacity: 0.5;
+    width: 19%;
+    height: 24%;
+  }
+}
+#next-btn {
+  position: absolute;
+  top: 70%;
+  left: 20%;
+  z-index: 5;
+  // background-color: yellow;
+  // opacity: 0.5;
+  width: 20%;
+  height: 10%;
+  @include respond(phone) {
+    top: 8%;
+    left: 73%;
+    // background-color: yellow;
+    // opacity: 0.5;
+    width: 16%;
+    height: 24%;
+  }
+}
+#prev-btn {
+  position: absolute;
+  top: 80%;
+  left: 22%;
+  z-index: 5;
+  // background-color: yellow;
+  // opacity: 0.5;
+  width: 16%;
+  height: 8%;
+  @include respond(phone) {
+    top: 8%;
+    left: 55%;
+    // background-color: yellow;
+    // opacity: 0.5;
+    width: 16%;
+    height: 24%;
+  }
+}
+.contentContainer {
+  margin-bottom: 5rem;
+  @include respond(phone) {
+    padding: 0
+  }
+}
+
+#contentRow {
+  width: 100%;
+}

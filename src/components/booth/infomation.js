@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import PortfolioContext from "../../context/context";
 import Title from "components/booth/title";
 import { ShowingGridList } from "components/booth/carousel";
+import Image from "react-bootstrap/Image";
 
 const Projects = () => {
   const { clubObj, posters } = useContext(PortfolioContext);
@@ -19,6 +20,15 @@ const Projects = () => {
       setIsMobile(true);
       setIsDesktop(false);
     }
+    recruitment.map((line, i) => {
+                        
+      const p = document.getElementById("information-text");
+      const lineElem = document.createElement("span");
+      lineElem.innerHTML = `<span>${line}</span><br />`;
+      p.appendChild(lineElem);
+      
+})
+    
   }, []);
 
   return (
@@ -37,15 +47,16 @@ const Projects = () => {
               >
                 <div className="project-wrapper__text">
                   <h3 className="project-wrapper__text-title">{""}</h3>
-                  <div id="contentBound">
-                    <p id="information-text">
-                      {recruitment.map((line, i) => (
-                        <span key={i}>
-                          <span>{line}</span> <br />
-                        </span>
-                      )) ||
-                        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi neque, ipsa animi maiores repellendu distinctioaperiam earum dolor voluptatum consequatur blanditiis inventore debitis fuga numquam voluptate architecto itaque molestiae."}
-                    </p>
+                  <div className="contentBound">
+                    <p id="information-text"> 
+                      {recruitment.map((line, i) => {
+                        
+                        // <span key={i}>
+                        //   <span>{line}</span> <br />
+                        // </span>
+                        
+})}</p>
+                   
                     {/* <p className="mb-4">{info2 || ""}</p> */}
                   </div>
                 </div>
@@ -62,7 +73,7 @@ const Projects = () => {
                 {/* className="project-wrapper__image"  className="thumbnail rounded" */}
                 <div className="project-wrapper__image">
                   <div className="thumbnail rounded">
-                    <ShowingGridList urls={posters} />
+                    {posters.length == 1 ? <Image src={posters[0]} fluid /> : <ShowingGridList urls={posters} />}
                   </div>
                 </div>
               </Fade>

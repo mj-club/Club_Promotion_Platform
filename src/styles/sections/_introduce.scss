@@ -7,7 +7,8 @@
   // );
   color: $white-color;
   height: 100%;
-  // height: 100vh;
+  // height: 90vh;
+  min-height: 80vh;
   border-top: 0px;
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
@@ -44,9 +45,11 @@
       height: 100%;
       justify-content: center;
       flex-direction: column;
+      
 
       @include respond(phone) {
         align-items: center;
+        
       }
 
       &-text {
@@ -145,4 +148,15 @@
     $study-primary-color 0%,
     $study-secondary-color 100%
   );
+}
+#about.chongdongyeon {
+  background-color: $chongdongyeon-primary-color;
+  background-image: linear-gradient(
+    135deg,
+    $chongdongyeon-primary-color 0%,
+    $chongdongyeon-secondary-color 100%
+  );
+}
+.introduce_content {
+  width: 100%;
 }

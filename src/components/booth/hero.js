@@ -6,9 +6,8 @@ import PortfolioContext from "../../context/context";
 import Navbar from "react-bootstrap/Navbar";
 
 const Header = () => {
-  const { clubObj, key } = useContext(PortfolioContext);
-  const { name, brief_introduction, type } = clubObj;
-
+  const { clubObj, key,  name } = useContext(PortfolioContext);
+  const { brief_introduction, type } = clubObj;
   const [isDesktop, setIsDesktop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -33,8 +32,8 @@ const Header = () => {
           distance="30px"
         >
           <h1 className="hero-title">
-            <span>{"전시창작분과, "}</span>{" "}
-            <span className={`text-color-main ${key}`}>{name}</span>
+            <span>{`${name}, `}</span>{" "}
+            <span className={`text-color-main ${key}`}>{clubObj.name}</span>
             <br />
             {/* {brief_introduction} */}
             {/* <span className="brief">저는 열정있는 개발자입니다.</span> */}

@@ -1,24 +1,40 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Fade from "react-reveal/Fade";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import PortfolioContext from "../../context/context";
 import Title from "components/booth/title";
 import { Grid, IconButton } from "@material-ui/core";
+function checkMobile() { var varUA = navigator.userAgent.toLowerCase(); //userAgent 값 얻기 
+  if (varUA.indexOf('android') > -1) { // 안드로이드 
+    return "android"; } else if (varUA.indexOf('iphone') > -1 || varUA.indexOf('ipad') > -1 || varUA.indexOf('ipod') > -1 || varUA.indexOf('ios')) { // IOS
+       return "ios"; } else { // IOS, 안드로이드 외 
+        return "other"; } }
 
 const Contact = () => {
   const { clubObj, key } = useContext(PortfolioContext);
-  const { facebook, instargram, openchat } = clubObj.contact_us;
-  const instargramUrl = `https://www.instagram.com/${instargram}/`;
+  const {form, sms} = clubObj.how_to_join;
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    
+    if (window.innerWidth > 769) {
+      setIsDesktop(true);
+      setIsMobile(false);
+    } else {
+      setIsMobile(true);
+      setIsDesktop(false);
+    }})
   return (
     <section id="contact" className={key}>
       <Container>
-        <Title title="Contact Us" />
-        <Fade bottom duration={1000} delay={800} distance="30px">
+        <Title title="지원하기" />
+        <Fade bottom duration={800} delay={500} distance="30px">
           <div className="contact-wrapper">
             {/* <p className="contact-wrapper__text">
               {cta || "Would you like to work with me? Awesome!"}
-            </p>
-            <a
+            </p> */}
+            {/* <a
               target="_blank"
               rel="noopener noreferrer"
               className="cta-btn cta-btn--resume"
@@ -30,7 +46,7 @@ const Contact = () => {
             >
               {btn || "Let's Talk"}
             </a> */}
-            <Grid container spacing={3} justify="center">
+            {/* <Grid container spacing={3} justify="center">
               <Grid item>
                 <IconButton href={facebook}>
                   <img
@@ -55,7 +71,49 @@ const Contact = () => {
                   />
                 </IconButton>
               </Grid>
-            </Grid>
+            </Grid> */}
+            <Container className="d-flex mt-3 justify-content-center">
+                      {/* <Row>
+                      <Col>
+                        <Title title="Contact Us" />
+                      </Col>
+                    </Row> */}
+                      <Row>
+                        {/* <Col>
+                      <div id="sns_title">📱코아 SNS</div>
+                    </Col> */}
+                    {form !== undefined?
+                        <Col>
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`cta-btn cta-btn--resume ${key}`}
+                            href={form}
+                          >
+                            지원 링크
+                          </a>
+                        </Col>:<></>}
+                        {sms !== undefined?
+                        <Col>
+                          {isMobile ? 
+                          <a
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`cta-btn cta-btn--resume ${key}`}
+                            href={ 'sms:'+sms +(checkMobile() === 'ios' ? '&' : '?') + 'body=지원하기' }
+                          >
+                            문자 지원
+                          </a>:<a className={`cta-btn cta-btn--resume ${key}` } onClick={(e)=>{if(e.target.innerText=='문자 지원') {
+                            e.target.innerText = sms;
+                            e.target.style.width = "22rem"
+                          }else {
+                            e.target.innerText = "문자 지원";
+                            e.target.style.removeProperty("width")
+                          }}}>문자 지원</a>}
+                        </Col> :<></>}
+                        
+                      </Row>
+                    </Container>
           </div>
         </Fade>
       </Container>

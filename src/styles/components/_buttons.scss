@@ -291,8 +291,11 @@
     background: $white-color;
   }
 
+}
+
+.cta-btn--resume.social {
   &:hover {
-    color: $secondary-color;
+    color: $social-secondary-color;
     text-decoration: none;
 
     &::after {
@@ -300,6 +303,69 @@
     }
   }
 }
+.cta-btn--resume.volunteer {
+  &:hover {
+    color: $volunteer-secondary-color;
+    text-decoration: none;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+.cta-btn--resume.art {
+  &:hover {
+    color: $art-secondary-color;
+    text-decoration: none;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+.cta-btn--resume.religion {
+  &:hover {
+    color: $religion-secondary-color;
+    text-decoration: none;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+.cta-btn--resume.sports {
+  &:hover {
+    color: $sports-secondary-color;
+    text-decoration: none;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+.cta-btn--resume.study {
+  &:hover {
+    color: $study-secondary-color;
+    text-decoration: none;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+.cta-btn--resume.exhibition {
+  &:hover {
+    color: $exhibition-secondary-color;
+    text-decoration: none;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+
+
 
 /* Arrow Button */
 .up i {
