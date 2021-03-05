@@ -35,6 +35,12 @@
     font-size: 1rem;
   }
 }
+.ment4 {
+  font-size: 1.5rem;
+  @include respond(phone) {
+    font-size: 1rem;
+  }
+}
 
 
 
@@ -63,6 +69,25 @@
   }
 }
 
+#completeCard {
+  position: absolute;
+  width: 70%;
+  left: 54%;
+  top: 39%;
+  align-items: center;
+  font-family: "둥근모";
+  @include respond(phone) {
+    top: 65%;
+    left: 15%;
+  }
+}
+#completeCardMent{
+  font-size: 1.5rem;
+  @include respond(phone) {
+    font-size: 1rem;
+  }
+}
+
 #nameInput {
   width: 100%;
   @include respond(phone) {
@@ -72,4 +97,19 @@
 
 .userName {
   font-weight: bold;
+}
+
+#hunterMent {
+  position: absolute;
+  color:black;
+  font-size: 2rem;
+  left: 15%;
+  top: 67%;
+  align-items: center;
+  font-family: "둥근모";
+  @include respond(phone) {
+    top: 30%;
+    left: 10%;
+    font-size: 1.25rem;
+  }
 }

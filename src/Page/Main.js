@@ -19,7 +19,7 @@ import sports from "../img/sports.png";
 import study from "../img/study.png";
 import volunteer from "../img/volunteer.png";
 import exhibition from "../img/exhibition.png";
-import chondongyeon from "../img/chongdongyeon.png"
+import chongdongyeon from "../img/chongdongyeon.png"
 import art_b from "../img/art_b.png";
 import social_b from "../img/social_b.png";
 import religion_b from "../img/religion_b.png";
@@ -27,7 +27,7 @@ import sports_b from "../img/sports_b.png";
 import study_b from "../img/study_b.png";
 import volunteer_b from "../img/volunteer_b.png";
 import exhibition_b from "../img/exhibition_b.png";
-import chondongyeon_b from "../img/chongdongyeon.png"
+import chongdongyeon_b from "../img/chongdongyeon_b.png"
 import art_btn from "../img/art_btn.png";
 import social_btn from "../img/social_btn.png";
 import religion_btn from "../img/religion_btn.png";
@@ -42,6 +42,8 @@ import popup1 from "../img/popup_1.jpeg"
 import popup2 from "../img/popup_2.jpeg"
 import popup3 from "../img/popup_3.jpeg"
 import popup4 from "../img/popup_4.jpeg"
+import popup5 from "../img/popup_5.jpeg"
+
 import Image from "react-bootstrap/Image";
 import Fade from "react-reveal/Fade";
 // import artImg from "../img/art.jpg";
@@ -85,9 +87,9 @@ const Main = () => {
   const [popupIdx, setPopupIdx] = useState(0);
   const [userName, setUserName] = useState(undefined);
   const [helperText, setHelperText] = useState("");
-  const popupImage = [popup1, popup2, popup3, popup4];
-  const popupText1 = ["", "뭐야 이 애송이는?", " 들어본 적도 없는 트레져헌터군. 풉 트레져헌터는 아무나 하는게 아니야~ 혼자서는 찾긴 어려울텐데 혹시 나에게 배워서 같이 찾아보겠나?", "너에게 단서 7개를 줄테니 한번 찾아와봐! 찾아온다면 나랑 같이 찾을 자격을 주도록 하지"];
-  const popupText2 = ["", "내.. 내이름은 ", "...ㅈ...좋다...! 어떻게 하면 되는거지?", "좋았어!! 출발!!!!"];
+  const popupImage = [popup1, popup2, popup3, popup4, popup5];
+  const popupText1 = ["", "거기 누구냐! 신분을 밝혀라!", " 들어본 적도 없는 트레져헌터군. 풉 트레져헌터는 아무나 하는게 아니야~ 혼자서는 찾긴 어려울텐데 혹시 나에게 배워서 같이 찾아보겠나?", "너에게 단서 7개를 줄테니 한번 찾아와봐! 찾아온다면 나랑 같이 찾을 자격을 주도록 하지", "흠...그럼 이 섬의 운동장인 총동연 부스를 찾아와봐 그럼 단서를 주지"];
+  const popupText2 = ["", "내.. 내이름은 ", "...ㅈ...좋다...! 어떻게 하면 되는거지?", "좋다! 단서는 어디서 얻지?", "좋아 거기서 보자!!"];
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleInputName = () => {
@@ -110,10 +112,10 @@ const Main = () => {
       }
       return
     }
-    setPopupIdx((popupIdx+1) % 4);
+    setPopupIdx((popupIdx+1) % 5);
   }
   const handlePrev= () => {
-    setPopupIdx((popupIdx-1) % 4);
+    setPopupIdx((popupIdx-1) % 5);
   }
   useEffect(() => {
     if (window.innerWidth > 769) {
@@ -179,6 +181,11 @@ const Main = () => {
             {popupText1[3]}
             </TypeWriter> : <></>
           }
+          { popupIdx == 4 ?
+          <TypeWriter typing={1}>
+            {popupText1[4]}
+            </TypeWriter> : <></>
+          }
             </span>
           </div>
           <div id="text2">
@@ -209,7 +216,7 @@ const Main = () => {
           <Button variant="secondary" onClick={handlePrev}>
             prev
           </Button> : <></>}
-          { popupIdx != 3 ?
+          { popupIdx != 4 ?
           <Button variant="primary" onClick={handleNext}>
             Next
           </Button> : <Button variant="primary" onClick={handleClose}>GoGo</Button>
@@ -321,7 +328,7 @@ const Main = () => {
           delay={1400}
           distance={isMobile ? "20px" : "50px"}
         >
-        <a id="chongdonyeonLink" href="/총동연" className="link">
+        <a id="chongdongyeonLink" href="/총동연" className="link">
           {/* {isMobile ? ( */}
             <Image src={chongdongyeon_btn} id="chongdongyeon-btn" className="mobile-btn" />
           {/* ) : (
@@ -407,7 +414,7 @@ const Main = () => {
           delay={1200}
           distance={isMobile ? "20px" : "50px"}
         >
-          <Image src={chondongyeon} id="chondongyeon" fluid></Image>
+          <Image src={chongdongyeon} id="chongdongyeon" fluid></Image>
         </Fade>
         <Fade
           top
@@ -440,6 +447,14 @@ const Main = () => {
           distance={isMobile ? "20px" : "50px"}
         >
           <Image src={sports_b} id="sportsHover" fluid></Image>
+        </Fade>
+        <Fade
+          top
+          duration={2000}
+          delay={1200}
+          distance={isMobile ? "20px" : "50px"}
+        >
+          <Image src={chongdongyeon_b} id="chongdongyeonHover" fluid></Image>
         </Fade>
         <Fade
           top

@@ -185,6 +185,23 @@ a:hover {
   }
 }
 
+.text-color-main.chongdongyeon {
+  
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: black;
+
+  // Responsive text purple style
+  @include respond(phone) {
+    background-image: none;
+    -webkit-text-fill-color: black;
+    // font-size: 2em;
+  }
+
+  &:hover {
+    transform: translateX(2px);
+  }
+}
+
 // .brief {
 //   font-size: 3rem;
 // }

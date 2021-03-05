@@ -15,11 +15,11 @@ import SubContent from "components/booth/subContent";
 import Booth from "Page/Chongdongyeon";
 import TestBg from "img/testbg.jpeg"
 import Image from "react-bootstrap/Image";
-import CdyIntoduce from "components/chondongyeon/cdyIntoduce";
-import CdyHero from "components/chondongyeon/cdyHero";
-import CdyGuide from "components/chondongyeon/cdyGuide";
-import EventAnnounce from "components/chondongyeon/eventAnnounce";
-import Quiz from "components/chondongyeon/quiz"
+import CdyIntoduce from "components/chongdongyeon/cdyIntoduce";
+import CdyHero from "components/chongdongyeon/cdyHero";
+import CdyGuide from "components/chongdongyeon/cdyGuide";
+import EventAnnounce from "components/chongdongyeon/eventAnnounce";
+import Quiz from "components/chongdongyeon/quiz"
 // const sections = [
 //   { title: "학술분과", url: "/" },
 //   { title: "사회연구분과", url: "/" },
@@ -83,12 +83,11 @@ const Sub = ({ match }) => {
     <>
 
     <PortfolioProvider value={{ sections, departmentObj, match }}>
-      <Image src={TestBg} style={{position: "fixed",width: "100%", height: "100vh", opacity: "0.5", zIndex: "0"}}/>
+      {/* <Image src={TestBg} style={{position: "fixed",width: "100vw", height: "100vh", opacity: "0.5", zIndex: "0"}}/> */}
       <BoothBar />
       <CdyHero />
       <CdyGuide />
       <EventAnnounce />
-      <Quiz />
       <CdyIntoduce />
       <Footer />
     </PortfolioProvider>
