@@ -27,11 +27,10 @@ const Projects = () => {
   }, []);
 
   return (
-    <section id="projects" >
+    <section id="projects" className={departmentObj.key} >
       <Container>
         <div className="project-wrapper">
           <Title title="이벤트 소개" />
-
               <Row >
               {/* <Paper className="cdyEvent" elevation={3}> */}
 

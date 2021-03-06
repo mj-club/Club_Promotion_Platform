@@ -17,10 +17,13 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: theme.spacing(1),
     height: "50%"
   },
+  nonVisible: {
+    display: "none"
+  }
 }))
 
 
-export default function AddressForm() {
+export default function AddressForm({ idx=0 }) {
   const classes = useStyles();
   const { departmentObj } = useContext(PortfolioContext);
   const { quiz } = departmentObj;
@@ -29,20 +32,21 @@ export default function AddressForm() {
   console.log(localAns)
   const date = new Date()
 
-  console.log(date.getMonth(), date.getDate())
-  const [pass, setPass] = useState(quiz[0].a == localAns[0])
+  console.log(idx, quiz[idx]) 
+  const [pass, setPass] = useState(localAns === null ? false : quiz[idx].answer == localAns[idx])
   const checkAnswer = (e)=>{
     const ans = document.getElementById("answer")
     const btn = document.getElementById("submitAnser")
-    if(ans.value == quiz[0].a) {
+    if(ans.value == quiz[idx].answer) {
       ans.readOnly = true
-      ans.value = quiz[0].a
       ans.parentElement.style.backgroundColor =" rgba(0, 0, 0, 0.09)"
       btn.style.backgroundColor = "rgb(220, 0, 78)"
       btn.firstChild.innerText = "정답!"
       let arr = localAns
-      arr[0] = quiz[0].a
+      arr[idx] = quiz[idx].answer
       localStorage.setItem('quizAnswer',JSON.stringify(arr))
+      setLocalAns(JSON.parse(localStorage.getItem('quizAnswer')))
+      ans.value = localAns[idx]
     }
   }
   useEffect(()=>{
@@ -50,23 +54,35 @@ export default function AddressForm() {
       const init = ['','','','','','','']
       localStorage.setItem('quizAnswer',JSON.stringify(init))
       setLocalAns(JSON.parse(localStorage.getItem('quizAnswer')))
+      console.log("init")
+      setPass(false)
     }
-    // if (pass) {
-    //   const ans = document.getElementById("answer")
-    //   ans.value = quiz[0].a
-    //   const btn = document.getElementById("submitAnser")
-    //   btn.click()
-    // }
-  },[])
-  return(
+    setPass(localAns === null ? false :quiz[idx].answer == localAns[idx])
+    // console.log(idx, quiz[idx].answer, localAns[idx])
+    if (localAns === null ? false :quiz[idx].answer == localAns[idx]) {
+      const ans = document.getElementById("answer")
+      const btn = document.getElementById("submitAnser")
+      ans.value = localAns[idx]
+      btn.click()
+    }else {
+      const ans = document.getElementById("answer")
+      const btn = document.getElementById("submitAnser")
+      ans.readOnly = false
+      ans.value = ""
+      ans.parentElement.style.backgroundColor ="white"
+      btn.style.backgroundColor = "#3f51b5"
+      btn.firstChild.innerText = "입력"
+    }
+  },[idx])
+  return quiz[idx].show ? (
     <React.Fragment>
       <Typography variant="h6" gutterBottom  >
-        차원의 도서관
+        {quiz[idx].title}
       </Typography>
       <Grid container spacing={3}>
       <Grid item xs={12} sm={12}>
         <div>
-          {quiz[0].q.map((line)=>{return(<span><span>{line}</span><br></br></span>)})}
+          {quiz[idx].q.map((line)=>{return(<span><span>{line}</span><br></br></span>)})}
         </div>
       </Grid>
       <Grid item xs={12} sm={6}>
@@ -87,8 +103,8 @@ export default function AddressForm() {
           className={classes.button}
           onClick={checkAnswer}
         >
-                    입력
-                  </Button>
+          입력
+        </Button>
         {/* <Grid item xs={12} sm={6}>
           <TextField
             required
@@ -170,5 +186,23 @@ export default function AddressForm() {
       </Grid>
     </React.Fragment>
   )
-  // :(<Grid container style={{display:"flex", justifyContent:"center", textAlign : "center"}}><Title title="coming soon" /></Grid>);
+  :(<Grid container style={{display:"flex", justifyContent:"center", textAlign : "center"}}><Title title="coming soon" /><Button
+  variant="contained"
+  color="primary"
+  // onClick={handleNext}
+  id="submitAnser"
+  className={classes.nonVisible}
+  onClick={checkAnswer}
+  
+>
+  입력
+</Button><TextField
+            required
+            id="answer"
+            name="answer"
+            label="동아리 이름"
+            fullWidth
+            autoComplete="given-name"
+            className={classes.nonVisible}
+          /></Grid>);
 }

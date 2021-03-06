@@ -5,7 +5,7 @@ import Main from "Page/Main";
 import Test from "Page/Test";
 import Sub from "Page/Sub";
 import FileUpload from "Page/FileUpload";
-import TestSub from "Page/TestSub";
+import Chongdongyeon from "Page/Chongdongyeon";
 const AppRouter = () => {
   return (
     <Router>
@@ -20,7 +20,7 @@ const AppRouter = () => {
         ></Route>
         <Route path="/test" component={Test}></Route>
         <Route path="/fileup" component={FileUpload}></Route>
-        <Route path="/총동연" component={TestSub}></Route>
+        <Route path="/총동연" component={Chongdongyeon}></Route>
       </Switch>
     </Router>
   );

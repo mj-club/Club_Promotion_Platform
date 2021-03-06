@@ -78,7 +78,7 @@
     left: 6vw;
   }
 }
-#chondongyeon {
+#chongdongyeon {
   position: absolute;
   top: 13vh;
   left: 2%;
@@ -473,23 +473,42 @@
   }
 }
 
-
-#chongdonyeonLink {
+#chongdongyeonLink {
   position: absolute;
-  // left: 36.5%;
-  // top: 38%;
-  // width: 11.5%;
-  // height: 17%;
+  left: 29%;
+  top: 71%;
+  width: 11.5%;
+  height: 10.5%;
   z-index: 2;
   @include respond(phone) {
     position: absolute;
+    left: auto;
     top: 48vh;
     right: 0%;
   }
 }
 #chongdongyeon-btn {
+  top: -8vh;
+  left: 6vw;
   @include respond(phone) {
     right: 6vw;
+    left: auto;
+    top: auto;
+  }
+}
+#chongdongyeonHover {
+  position: absolute;
+  top: 12vh;
+  left: 1%;
+  width: 99%;
+  z-index: 3;
+  height: 84vh;
+  visibility: hidden;
+  @include respond(phone) {
+    height: 50vh;
+    width: 90%;
+    top: 47vh;
+    left: -4%;
   }
 }
 
