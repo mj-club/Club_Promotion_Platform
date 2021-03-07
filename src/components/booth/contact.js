@@ -4,29 +4,42 @@ import { Container, Row, Col } from "react-bootstrap";
 import PortfolioContext from "../../context/context";
 import Title from "components/booth/title";
 import { Grid, IconButton } from "@material-ui/core";
-import { Link } from 'react-scroll';
-import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
-function checkMobile() { var varUA = navigator.userAgent.toLowerCase(); //userAgent 값 얻기 
-  if (varUA.indexOf('android') > -1) { // 안드로이드 
-    return "android"; } else if (varUA.indexOf('iphone') > -1 || varUA.indexOf('ipad') > -1 || varUA.indexOf('ipod') > -1 || varUA.indexOf('ios')) { // IOS
-       return "ios"; } else { // IOS, 안드로이드 외 
-        return "other"; } }
+import { Link } from "react-scroll";
+import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
+function checkMobile() {
+  var varUA = navigator.userAgent.toLowerCase(); //userAgent 값 얻기
+  if (varUA.indexOf("android") > -1) {
+    // 안드로이드
+    return "android";
+  } else if (
+    varUA.indexOf("iphone") > -1 ||
+    varUA.indexOf("ipad") > -1 ||
+    varUA.indexOf("ipod") > -1 ||
+    varUA.indexOf("ios")
+  ) {
+    // IOS
+    return "ios";
+  } else {
+    // IOS, 안드로이드 외
+    return "other";
+  }
+}
 
 const Contact = () => {
   const { clubObj, key } = useContext(PortfolioContext);
-  const {form, sms} = clubObj.how_to_join;
+  const { form, sms } = clubObj.how_to_join;
   const [isDesktop, setIsDesktop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    
     if (window.innerWidth > 769) {
       setIsDesktop(true);
       setIsMobile(false);
     } else {
       setIsMobile(true);
       setIsDesktop(false);
-    }})
+    }
+  });
   return (
     <section id="contact" className={key}>
       <Container>
@@ -75,55 +88,79 @@ const Contact = () => {
               </Grid>
             </Grid> */}
             <Container className="d-flex mt-3 justify-content-center">
-                      {/* <Row>
+              {/* <Row>
                       <Col>
                         <Title title="Contact Us" />
                       </Col>
                     </Row> */}
-                      <Row>
-                        {/* <Col>
+              <Row>
+                {/* <Col>
                       <div id="sns_title">📱코아 SNS</div>
                     </Col> */}
-                    {form !== undefined?
-                        <Col>
-                          <a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`cta-btn cta-btn--resume ${key}`}
-                            href={form}
-                          >
-                            지원 링크
-                          </a>
-                        </Col>:<></>}
-                        {sms !== undefined?
-                        <Col>
-                          {isMobile ? 
-                          <a
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`cta-btn cta-btn--resume ${key}`}
-                            href={ 'sms:'+sms +(checkMobile() === 'ios' ? '&' : '?') + 'body=지원하기' }
-                          >
-                            문자 지원
-                          </a>:<a className={`cta-btn cta-btn--resume ${key}` } onClick={(e)=>{if(e.target.innerText=='문자 지원') {
+                {form !== undefined ? (
+                  <Col>
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`cta-btn cta-btn--resume ${key}`}
+                      href={form}
+                    >
+                      지원 링크
+                    </a>
+                  </Col>
+                ) : (
+                  <></>
+                )}
+                {sms !== undefined ? (
+                  <Col>
+                    {isMobile ? (
+                      <a
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`cta-btn cta-btn--resume ${key}`}
+                        href={
+                          "sms:" +
+                          sms +
+                          (checkMobile() === "ios" ? "&" : "?") +
+                          "body=지원하기"
+                        }
+                      >
+                        문자 지원
+                      </a>
+                    ) : (
+                      <a
+                        className={`cta-btn cta-btn--resume ${key}`}
+                        onClick={(e) => {
+                          if (e.target.innerText == "문자 지원") {
                             e.target.innerText = sms;
-                            e.target.style.width = "22rem"
-                          }else {
+                            e.target.style.width = "22rem";
+                          } else {
                             e.target.innerText = "문자 지원";
-                            e.target.style.removeProperty("width")
-                          }}}>문자 지원</a>}
-                        </Col> :<></>}
-                        
-                      </Row>
-                    </Container>
+                            e.target.style.removeProperty("width");
+                          }
+                        }}
+                      >
+                        문자 지원
+                      </a>
+                    )}
+                  </Col>
+                ) : (
+                  <></>
+                )}
+              </Row>
+            </Container>
           </div>
           <div id="a">
-        <Link to={isMobile ? "topNav" : "pcTopNav"} id="upLink" smooth duration={1000} >
-            <ArrowUpwardIcon id="upIcon" />
-          </Link>
+            <Link
+              to={isMobile ? "topNav" : "pcTopNav"}
+              id="upLink"
+              smooth
+              duration={1000}
+            >
+              <ArrowUpwardIcon id="upIcon" />
+            </Link>
           </div>
         </Fade>
-  
       </Container>
     </section>
   );

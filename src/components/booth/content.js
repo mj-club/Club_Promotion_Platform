@@ -6,11 +6,9 @@ import Title from "components/booth/title";
 import Tv from "../../img/screen.jpg";
 import Image from "react-bootstrap/Image";
 import ReactPlayer from "react-player";
-import TvController from "../../img/tv_controller.png"
-import TvControllerMobile from "../../img/tv_controller_m.png"
-import off from "../../img/off.png"
-
-
+import TvController from "../../img/tv_controller.png";
+import TvControllerMobile from "../../img/tv_controller_m.png";
+import off from "../../img/off.png";
 
 const Content = () => {
   const { clubObj, contentVideo } = useContext(PortfolioContext);
@@ -19,39 +17,39 @@ const Content = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [channel, setChannel] = useState(0);
   const [playing, setPlaying] = useState(false);
-  const handleOff = ()=>{
+  const handleOff = () => {
     // const target = document.getElementById("off");
-    if (playing){
-      setPlaying(false)
+    if (playing) {
+      setPlaying(false);
       // target.style.zIndex = 4
-    }else {
-      setPlaying(true)
+    } else {
+      setPlaying(true);
       // target.style.zIndex = 2
     }
     // if(target.style.zIndex == "") {
     //   target.style.zIndex = 2
     // }
     // if(target.style.zIndex == 2) {
-      
-    // }else {
-      
-    // }
-  }
 
-  const handleNext = ()=> {
-    let value = channel+1
-    if(value >= contentVideo.length) {
-      value = 0
+    // }else {
+
+    // }
+  };
+
+  const handleNext = () => {
+    let value = channel + 1;
+    if (value >= contentVideo.length) {
+      value = 0;
     }
-    setChannel(value)
-  }
-  const handlePrev = ()=> {
-    let value = channel-1
-    if(value < 0) {
-      value = contentVideo.length-1
+    setChannel(value);
+  };
+  const handlePrev = () => {
+    let value = channel - 1;
+    if (value < 0) {
+      value = contentVideo.length - 1;
     }
-    setChannel(value)
-  }
+    setChannel(value);
+  };
   useEffect(() => {
     if (window.innerWidth > 769) {
       setIsDesktop(true);
@@ -62,50 +60,74 @@ const Content = () => {
     }
   }, []);
 
-  return  (
+  return (
     <section id="content">
       <Container fluid={isMobile} className="contentContainer">
-      <Row  style={{display: "flex", justifyContent: "center", width: "100%"}}>
-        <Title title={`${clubObj.name} 영상관`} />
-      </Row>
-      <Row style={{display: "flex", justifyContent: "center", marginTop: "-3rem", width: "100%"}}>
-        <Title title={`[채널 수: ${contentVideo.length}개]`} />
-      </Row >
-        <Row id="contentRow" style={{marginTop: "-4.5rem"}}>
-        <Col lg={9} className="contentContainer">
-          <div className="content-wrapper tv-div"> 
-          {/* <div className="overlap"> */} 
-          <Image src={Tv} id="tv"></Image>
-          {/* <Image src={off} id="off"></Image> */}
-          {/* </div> */}
-          <ReactPlayer
-            id="player"
-            url={contentVideo[channel]}
-            controls={true}
-            playing={playing}
-            // width={isDesktop ? "67%" : "75%"}
-            width={isDesktop ? "81%" : "85%"}
-            // height={isDesktop ? "57.5%" : "33.4%"}
-            height={isDesktop ? "71.5%" : "62.7%"}
-          /> 
-      
-          </div>
+        <Row
+          style={{ display: "flex", justifyContent: "center", width: "100%" }}
+        >
+          <Title title={`${clubObj.name} 영상관`} />
+        </Row>
+        <Row
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "-3rem",
+            width: "100%",
+          }}
+        >
+          <Title title={`[채널 수: ${contentVideo.length}개]`} />
+        </Row>
+        <Row id="contentRow" style={{ marginTop: "-4.5rem" }}>
+          <Col lg={9} className="contentContainer">
+            <div className="content-wrapper tv-div">
+              {/* <div className="overlap"> */}
+              <Image src={Tv} id="tv"></Image>
+              {/* <Image src={off} id="off"></Image> */}
+              {/* </div> */}
+              <ReactPlayer
+                id="player"
+                url={contentVideo[channel]}
+                controls={true}
+                playing={playing}
+                // width={isDesktop ? "67%" : "75%"}
+                width={isDesktop ? "81%" : "85%"}
+                // height={isDesktop ? "57.5%" : "33.4%"}
+                height={isDesktop ? "71.5%" : "62.7%"}
+              />
+            </div>
           </Col>
-        <Col lg={3} className="contentContainer">
-          <div className="content-wrapper controller-div">
-          <div id="show-channel" className="control-btn" >{parseInt(channel)+1}</div>
-          <div id="off-btn" className="control-btn" onClick={handleOff}></div>
-          <div id="next-btn" className="control-btn" onClick={handleNext}></div>
-          <div id="prev-btn" className="control-btn" onClick={handlePrev}></div>
-          <Image src={isDesktop ? TvController : TvControllerMobile} id="tv-controller" />
-          </div>
+          <Col lg={3} className="contentContainer">
+            <div className="content-wrapper controller-div">
+              <div id="show-channel" className="control-btn">
+                {parseInt(channel) + 1}
+              </div>
+              <div
+                id="off-btn"
+                className="control-btn"
+                onClick={handleOff}
+              ></div>
+              <div
+                id="next-btn"
+                className="control-btn"
+                onClick={handleNext}
+              ></div>
+              <div
+                id="prev-btn"
+                className="control-btn"
+                onClick={handlePrev}
+              ></div>
+              <Image
+                src={isDesktop ? TvController : TvControllerMobile}
+                id="tv-controller"
+              />
+            </div>
           </Col>
         </Row>
         {/* <Test></Test> */}
       </Container>
-      
     </section>
-  ) 
+  );
 };
 
 export default Content;

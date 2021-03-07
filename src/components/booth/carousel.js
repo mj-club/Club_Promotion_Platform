@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
     pcGridList: {
       width: "auto",
       height: "auto",
-      transform: 'translateZ(0)',
+      transform: "translateZ(0)",
     },
     // title: {
     //   color: theme.palette.primary.light,
@@ -79,8 +79,8 @@ export const ShowingGridList = ({ urls }) => {
     }
   }, [targetUrl]);
 
-  return isMobile ? 
-    (<div className={classes.root}>
+  return isMobile ? (
+    <div className={classes.root}>
       <GridList className={classes.gridList} cols={2.5}>
         {urls.map((url, i) => (
           <GridListTile key={i}>
@@ -118,11 +118,15 @@ export const ShowingGridList = ({ urls }) => {
           </GridListTile>
         ))}
       </GridList>
-    </div>) : (
-      <div className={classes.root}>
+    </div>
+  ) : (
+    <div className={classes.root}>
       <GridList cellHeight="auto" className={classes.pcGridList}>
-        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-        </GridListTile>
+        <GridListTile
+          key="Subheader"
+          cols={2}
+          style={{ height: "auto" }}
+        ></GridListTile>
         {urls.map((url, i) => (
           <GridListTile key={i}>
             <Image src={url} alt={url} onClick={handleOpen} fluid />
@@ -160,9 +164,7 @@ export const ShowingGridList = ({ urls }) => {
         ))}
       </GridList>
     </div>
-    )
-    
-  ;
+  );
 };
 
 export const ShowimgCarosel = ({ urls, height }) => {

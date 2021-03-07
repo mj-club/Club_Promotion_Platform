@@ -29,13 +29,13 @@ export default function AddressForm({ idx = 0 }) {
   const [localAns, setLocalAns] = useState(
     JSON.parse(localStorage.getItem("quizAnswer"))
   );
-  const [helptext, setHelptext] = useState("")
+  const [helptext, setHelptext] = useState("");
   const date = new Date();
 
   const [pass, setPass] = useState(
     localAns === null ? false : quiz[idx].answer == localAns[idx]
   );
-  
+
   const checkAnswer = (e) => {
     const ans = document.getElementById("answer");
     const btn = document.getElementById("submitAnser");
@@ -49,9 +49,9 @@ export default function AddressForm({ idx = 0 }) {
       localStorage.setItem("quizAnswer", JSON.stringify(arr));
       setLocalAns(JSON.parse(localStorage.getItem("quizAnswer")));
       ans.value = localAns[idx];
-      setHelptext("통과~!")
-    }else {
-      setHelptext("정답이 아닙니다!")
+      setHelptext("통과~!");
+    } else {
+      setHelptext("정답이 아닙니다!");
     }
   };
   useEffect(() => {
@@ -75,10 +75,10 @@ export default function AddressForm({ idx = 0 }) {
       ans.parentElement.style.backgroundColor = "white";
       btn.style.backgroundColor = "#3f51b5";
       btn.firstChild.innerText = "입력";
-      setHelptext("")
+      setHelptext("");
     }
   }, [idx]);
-  return quiz[idx].show  ? (
+  return quiz[idx].show ? (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
         {quiz[idx].title}
@@ -110,7 +110,7 @@ export default function AddressForm({ idx = 0 }) {
             fullWidth
             autoComplete="given-name"
             helperText={helptext}
-            error={helptext===""?false:true}
+            error={helptext === "" ? false : true}
           />
         </Grid>
         <Button
@@ -209,12 +209,16 @@ export default function AddressForm({ idx = 0 }) {
       style={{ display: "flex", justifyContent: "center", textAlign: "center" }}
     >
       <Grid item xs={12}>
-      <Title title="coming soon" /></Grid>
-      <Grid item xs={12} >
-      <Title title={`${quiz[idx].date.month}월/${quiz[idx].date.day}일/${quiz[idx].date.hour}시`} /></Grid>
+        <Title title="coming soon" />
+      </Grid>
+      <Grid item xs={12}>
+        <Title
+          title={`${quiz[idx].date.month}월/${quiz[idx].date.day}일/${quiz[idx].date.hour}시`}
+        />
+      </Grid>
       {/* <Grid item xs={6} >
       <Title title={`${quiz[idx].date.hour}시`} /></Grid> */}
-      
+
       <Button
         variant="contained"
         color="primary"

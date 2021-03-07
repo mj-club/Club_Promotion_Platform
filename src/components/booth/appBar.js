@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
 const BoothBar = () => {
   const classes = useStyles();
   const { sections, departmentObj } = useContext(PortfolioContext);
-  const {key} = departmentObj
+  const { key } = departmentObj;
   const contains = sections.contains;
   const [isDesktop, setIsDesktop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -114,15 +114,14 @@ const BoothBar = () => {
           <img src={mjuIcon} width="30px" className={classes.logoInMob}></img>
         </IconButton>
         <Typography variant="h6" color="inherit" noWrap>
-        <Link
+          <Link
             // variant="body2"
             to={`/총동연`}
             className={classes.link}
           >
-          명지대 총동연
+            명지대 총동연
           </Link>
         </Typography>
-
       </Toolbar>
       <div className="mobile-menu">
         <ul className="menu">
@@ -152,12 +151,12 @@ const BoothBar = () => {
           </Link>
         ))}
         <Typography variant="h6" color="inherit" noWrap>
-        <Link
+          <Link
             // variant="body2"
             to={`/총동연`}
             className={classes.link}
           >
-          명지대 총동연
+            명지대 총동연
           </Link>
         </Typography>
       </Toolbar>

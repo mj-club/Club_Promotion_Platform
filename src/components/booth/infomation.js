@@ -21,14 +21,11 @@ const Projects = () => {
       setIsDesktop(false);
     }
     recruitment.map((line, i) => {
-                        
       const p = document.getElementById("information-text");
       const lineElem = document.createElement("span");
       lineElem.innerHTML = `<span>${line}</span><br />`;
       p.appendChild(lineElem);
-      
-})
-    
+    });
   }, []);
 
   return (
@@ -64,7 +61,11 @@ const Projects = () => {
                 {/* className="project-wrapper__image"  className="thumbnail rounded" */}
                 <div className="project-wrapper__image">
                   <div className="thumbnail rounded">
-                    {posters.length == 1 ? <Image src={posters[0]} fluid /> : <ShowingGridList urls={posters} />}
+                    {posters.length == 1 ? (
+                      <Image src={posters[0]} fluid />
+                    ) : (
+                      <ShowingGridList urls={posters} />
+                    )}
                   </div>
                 </div>
               </Fade>

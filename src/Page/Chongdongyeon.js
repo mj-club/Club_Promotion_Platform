@@ -13,13 +13,13 @@ import Navbar from "react-bootstrap/Navbar";
 import BoothBar from "components/booth/appBar";
 import SubContent from "components/booth/subContent";
 import Booth from "Page/Chongdongyeon";
-import TestBg from "img/testbg.jpeg"
+import TestBg from "img/testbg.jpeg";
 import Image from "react-bootstrap/Image";
 import CdyIntoduce from "components/chongdongyeon/cdyIntoduce";
 import CdyHero from "components/chongdongyeon/cdyHero";
 import CdyGuide from "components/chongdongyeon/cdyGuide";
 import EventAnnounce from "components/chongdongyeon/eventAnnounce";
-import Quiz from "components/chongdongyeon/quiz"
+import Quiz from "components/chongdongyeon/quiz";
 
 // const sections = [
 //   { title: "학술분과", url: "/" },
@@ -34,7 +34,7 @@ import Quiz from "components/chongdongyeon/quiz"
 const useStyles = makeStyles((theme) => ({
   testbg: {
     backgroundImage: TestBg,
-  }
+  },
 }));
 // const loadImg = async () => {
 //   const urls = [];
@@ -72,22 +72,20 @@ const Sub = ({ match }) => {
     if (departmentObj === undefined || departmentObj.id != departmentTemp.id) {
       setDepartmentObj(departmentTemp);
     }
-    
   });
 
   return departmentObj !== undefined ? (
     <>
-
-    <PortfolioProvider value={{ sections, departmentObj, match }}>
-      {/* <Image src={TestBg} style={{position: "fixed",width: "100vw", height: "100vh", opacity: "0.5", zIndex: "0"}}/> */}
-      <BoothBar />
-      <CdyHero />
-      <CdyGuide />
-      <EventAnnounce />
-      <CdyIntoduce />
-      <Footer />
-    </PortfolioProvider>
-</>
+      <PortfolioProvider value={{ sections, departmentObj, match }}>
+        {/* <Image src={TestBg} style={{position: "fixed",width: "100vw", height: "100vh", opacity: "0.5", zIndex: "0"}}/> */}
+        <BoothBar />
+        <CdyHero />
+        <CdyGuide />
+        <EventAnnounce />
+        <CdyIntoduce />
+        <Footer />
+      </PortfolioProvider>
+    </>
   ) : (
     <></>
   );
