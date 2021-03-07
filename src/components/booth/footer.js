@@ -51,7 +51,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           > */}
-            Developers: 비대상대책위원장 양성훈 | 기획재정국장 정동준 |
+            Developers: 비상대책위원장 양성훈 | 기획재정국장 정동준 |
             복지정책국장 김휘준 <br></br>
             Desinger: 대외홍보국장 노현정<br></br>
             Copyright © 명지대학교 인문캠퍼스 총동아리연합회 비상대책위원회

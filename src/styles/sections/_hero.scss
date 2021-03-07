@@ -155,6 +155,14 @@
     $exhibition-secondary-color 100%
   );
 }
+.header.chongdongyeon {
+  background-color: $chongdongyeon-primary-color;
+  background-image: linear-gradient(
+    135deg,
+    $chongdongyeon-primary-color 0%,
+    $chongdongyeon-secondary-color 100%
+  );
+}
 .pcTopNav.social {
   background-color: $social-primary-color;
   background-image: linear-gradient(

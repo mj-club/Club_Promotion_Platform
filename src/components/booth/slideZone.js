@@ -10,7 +10,7 @@ import { Container, Row, Col } from "react-bootstrap";
 // import './styles.css'
 
 const Main = styled.div`
-  height: 400px;
+  height: 80vh;
 `
 
 const Content = styled.div`
@@ -30,8 +30,9 @@ const Marker = styled.span`
 const Image = styled(a.div)`
   width: 100%;
   height: 100%;
-  background-size: cover;
+  background-size: contain;
   background-position: center center;
+  background-repeat:no-repeat;
 `
 
 const Test = () => {
@@ -47,19 +48,14 @@ const Test = () => {
     <div id="sliderRoot">
       {contentPhoto &&
     <Main>
-        <InfiniteSlider items={contentPhoto} width={700} visible={2}>
+        <InfiniteSlider items={contentPhoto} width={800} visible={2}>
           {({ css }, i) => (
             <Content>
               <Marker>{String(i).padStart(2, '0')}</Marker>
               <Image style={{ backgroundImage: css }} />
             </Content>
           )}
-          {/* {contentPhoto.map(({css}, i) => (
-            <Content>
-              <Marker>{String(i).padStart(2, '0')}</Marker>
-              <Image style={{ backgroundImage: css }} />
-            </Content>
-          ))} */}
+          
         </InfiniteSlider>
       </Main>
 }

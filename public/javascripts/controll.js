@@ -137,30 +137,23 @@ if (!touchDevice) {
   function updatePaddles() {
     // If navItems scrollLeft is 0 don't show the left paddle
     // If navItems scrollLeft equals scrollWidth don't show the right paddle
-    console.log("itemsWidth", itemsWidth, "width", width);
     if (width < itemsWidth) {
       // Enable
       if (navItems.scrollLeft !== 0) {
         hideShowRafCall(false, startOfList);
-        console.log("false, left");
       }
       if (navItems.scrollLeft !== navItems.scrollWidth) {
         hideShowRafCall(false, endOfList);
-        console.log("false, right");
       }
     } else {
       // Disable left and right paddles
       hideShowRafCall(true, startOfList);
-      console.log("true, left");
       hideShowRafCall(true, endOfList);
-      console.log("true, right");
     }
   }
   // Add aria-hidden attributes to hide/show functions
   function hidePaddle(className, ticker) {
-    console.log(className);
     const paddle = document.querySelector(className);
-    console.log(paddle);
     paddle.disabled = true;
     paddle.setAttribute("aria-hidden", true);
     paddle.removeEventListener("click", handlePaddleClick);
@@ -174,7 +167,6 @@ if (!touchDevice) {
 
     if (width < itemsWidth && !atStart && !atEnd) {
       const paddle = document.querySelector(className);
-      console.log("show paddle called");
       paddle.disabled = false;
       paddle.setAttribute("aria-hidden", false);
       // Removing event listener first to ensure there is only ever one

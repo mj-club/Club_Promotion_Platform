@@ -37,7 +37,6 @@ const SubContent = () => {
   const { departmentObj } = useContext(PortfolioContext);
   const { name, brief_introduction, key, contains, id, hashtag, information, charactor } = departmentObj;
 
-  console.log(departmentObj);
   const [isDesktop, setIsDesktop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -87,6 +86,7 @@ const SubContent = () => {
                   rel="noopener noreferrer"
                   className={`cta-btn text-color-main ${key} hashtag`}
                   href={url}
+                  key={url}
                 >
                   {"#"}
                   {contain.name}
@@ -100,6 +100,7 @@ const SubContent = () => {
                 target="_blank"
                 className={`cta-btn text-color-main ${key} hashtag`}
                 href={tag.key}
+                key={tag.key}
               >
                 {"#"}
                 {tag.name}

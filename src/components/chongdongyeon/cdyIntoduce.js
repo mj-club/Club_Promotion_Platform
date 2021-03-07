@@ -2,8 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import Fade from 'react-reveal/Fade';
 import PortfolioContext from '../../context/context';
 import Title from "components/booth/title";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Image } from "react-bootstrap";
 import { Grid, IconButton } from "@material-ui/core";
+import members from "img/members.jpg"
 
 const Contact = () => {
   const { departmentObj } = useContext(PortfolioContext);
@@ -20,23 +21,24 @@ const Contact = () => {
     }
   })
   return (
-    <section id="contact" className={key}>
+    <section id="contact" className={`${key} intro`}>
       <Container>
         <Title title="총동연 소개" />
         <Row className="about-wrapper">
           <Col md={6} sm={12}>
             <Fade bottom duration={1000} delay={600} distance="30px">
               <div className="about-wrapper__image">
-                {/* <AboutImg alt="profile picture" filename={} /> */}
+                <Image src={members} fluid />
               </div>
             </Fade>
           </Col>
+          <br/>
           <Col md={6} sm={12}>
             <Fade left={isDesktop} bottom={isMobile} duration={1000} delay={1000} distance="30px">
               <div className="about-wrapper__info">
-                <p className="about-wrapper__info-text">
+                <p className="about-wrapper__info-text introduce_content contentBound">
                 {introduction.map((line)=>(
-                  <span><span>{line}</span><br></br></span>
+                  <span key={line}><span>{line}</span><br></br></span>
                 ))}
                 </p>
                 {isDesktop ? (
@@ -76,6 +78,21 @@ const Contact = () => {
               </div>
             </Fade>
           </Col>
+        </Row>
+        
+        <Row style={{marginTop:"5rem"}}>
+          <Col>
+            <Title title="만든 사람"/>
+          </Col>
+          <Col className="d-flex mt-3 justify-content-center" lg={12}>
+          <a className={`cta-btn cta-btn--resume ${key}` } onClick={(e)=>{if(e.target.innerText=='총동아리연합회 비상대책위원회') {
+                            e.target.innerText = "양성훈 김휘준 노현정 정동준";
+                            e.target.style.width = "22rem"
+                          }else {
+                            e.target.innerText = "총동아리연합회 비상대책위원회";
+                            e.target.style.removeProperty("width")
+                          }}}>총동아리연합회 비상대책위원회</a>
+            </Col>
         </Row>
       </Container>
     </section>

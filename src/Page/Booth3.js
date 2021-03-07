@@ -90,7 +90,6 @@ const BoothPage = () => {
   useEffect(async () => {
     const obj = await loading();
     const images = await loadImg();
-    console.log(obj);
     setClubObj(obj);
     setUrls(images);
   }, []);

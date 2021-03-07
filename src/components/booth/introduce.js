@@ -51,26 +51,12 @@ const About = () => {
       setIsMobile(true);
       setIsDesktop(false);
     }
-    // console.log(prevHeight);
-    // console.log(activityDiv.height);
-    // const sampleImg = document.querySelectorAll(".sampleImg");
-    // const heightList = [];
-    // sampleImg.forEach((each) => {
-    //   heightList.push(each.height);
-    // });
-    // console.log(heightList);
-    // prevHeight = Math.max(...heightList);
-    // console.log(prevHeight);
-    // if (prevHeight === undefined || prevHeight !== activityDiv.height) {
-    //   setActivityDiv({ height: prevHeight });
-    //   console.log(prevHeight);
-    // }
     if(isLoading) {
       setIsLoading(false)
     }
   },[isLoading]);
 
-  return isLoading ? (activities.map((url)=>(<img src={url} className={classes.nonVisible}></img>))) : (
+  return isLoading ? (activities.map((url)=>(<img key={url} src={url} className={classes.nonVisible}></img>))) : (
     <>
       <section id="about" className={key}>
         <Container>
@@ -134,6 +120,7 @@ const About = () => {
                     </Col> */}
                     {facebook !== undefined?
                         <Col>
+                        <br></br>
                           <a
                             target="_blank"
                             rel="noopener noreferrer"
@@ -145,6 +132,7 @@ const About = () => {
                         </Col>:<></>}
                         {instagram !== undefined?
                         <Col>
+                        <br></br>
                           <a
                             target="_blank"
                             rel="noopener noreferrer"
@@ -156,6 +144,7 @@ const About = () => {
                         </Col> :<></>}
                         {youtube !== undefined?
                         <Col>
+                        <br></br>
                           <a
                             target="_blank"
                             rel="noopener noreferrer"
@@ -167,6 +156,7 @@ const About = () => {
                         </Col> :<></>}
                         {openchat !== undefined?
                         <Col>
+                          <br></br>
                           <a
                             target="_blank"
                             rel="noopener noreferrer"

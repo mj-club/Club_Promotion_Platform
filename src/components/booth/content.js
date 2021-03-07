@@ -31,7 +31,6 @@ const Content = () => {
     // if(target.style.zIndex == "") {
     //   target.style.zIndex = 2
     // }
-    // console.log(target.style.zIndex)
     // if(target.style.zIndex == 2) {
       
     // }else {
@@ -61,15 +60,18 @@ const Content = () => {
       setIsMobile(true);
       setIsDesktop(false);
     }
-    console.log(document.getElementById("player"))
-    console.log(contentVideo.length)
   }, []);
 
   return  (
     <section id="content">
       <Container fluid={isMobile} className="contentContainer">
-        <Title title="동아리 영상" />
-        <Row id="contentRow">
+      <Row  style={{display: "flex", justifyContent: "center", width: "100%"}}>
+        <Title title={`${clubObj.name} 영상관`} />
+      </Row>
+      <Row style={{display: "flex", justifyContent: "center", marginTop: "-3rem", width: "100%"}}>
+        <Title title={`[채널 수: ${contentVideo.length}개]`} />
+      </Row >
+        <Row id="contentRow" style={{marginTop: "-4.5rem"}}>
         <Col lg={9} className="contentContainer">
           <div className="content-wrapper tv-div"> 
           {/* <div className="overlap"> */} 

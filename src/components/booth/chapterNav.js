@@ -92,7 +92,6 @@ const Chapternav = () => {
     }
     const touchDevice = isTouch();
     const a = document.getElementsByTagName("html");
-    console.log(a);
     // if (!touchDevice) {
     //   document.getElementsByTagName("html")[0].classList.add("touch");
     // }
@@ -222,23 +221,18 @@ const Chapternav = () => {
       function updatePaddles() {
         // If navItems scrollLeft is 0 don't show the left paddle
         // If navItems scrollLeft equals scrollWidth don't show the right paddle
-        console.log("itemsWidth", itemsWidth, "width", width);
         if (width < itemsWidth) {
           // Enable
           if (navItems.scrollLeft !== 0) {
             hideShowRafCall(false, startOfList);
-            console.log("false, left");
           }
           if (navItems.scrollLeft !== navItems.scrollWidth) {
             hideShowRafCall(false, endOfList);
-            console.log("false, right");
           }
         } else {
           // Disable left and right paddles
           hideShowRafCall(true, startOfList);
-          console.log("true, left");
           hideShowRafCall(true, endOfList);
-          console.log("true, right");
         }
       }
       // Add aria-hidden attributes to hide/show functions
@@ -258,7 +252,6 @@ const Chapternav = () => {
 
         if (width < itemsWidth && !atStart && !atEnd) {
           const paddle = document.querySelector(className);
-          console.log("show paddle called");
           paddle.disabled = false;
           paddle.setAttribute("aria-hidden", false);
           // Removing event listener first to ensure there is only ever one
@@ -281,10 +274,7 @@ const Chapternav = () => {
 
       function observerCallback(entries, observer) {
         entries.forEach(function (entry) {
-          console.log(entry)
-          console.log(observedItems);
           let name = entry.target.id.replace(/\s/g, "")
-          console.log(name)
           observedItems[name].visible = entry.isIntersecting;
           if (
             observedItems[name].index === 0 &&
@@ -386,7 +376,7 @@ const Chapternav = () => {
               const url = `/booth/${id}/${contain.key}`;
               // const url = `./${name}/${contain}`;
               return (
-                <li id={contain.name} className="chapternav-item">
+                <li key={contain.name} id={contain.name} className="chapternav-item">
                   <a className="chapternav-link" href={url}>
                     <figure className="chapternav-icon">
                       <img width="40" height="32" viewBox="0 0 40 32" src={dic[contain.key]}></img>

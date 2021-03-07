@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({}));
 //   }
 //   return urls;
 // };
-const loadFiles = async (clubName, fileType) => {
+const loadFiles = async (clubName, fileType, clubObj={}) => {
   const urls = [];
   const arr = await storageService
     .ref()
@@ -50,6 +50,11 @@ const loadFiles = async (clubName, fileType) => {
   for (let i = 0; i < arr.items.length; i++) {
     let url = await arr.items[i].getDownloadURL();
     urls.push(url);
+  }
+  if(clubObj.content_video) {
+    for (const url of clubObj.content_video) {
+      urls.push(url)
+    }
   }
   return urls;
 };
@@ -105,15 +110,13 @@ const Booth = () => {
         setActivities(activityTemp);
       }
     }
-    contentVideoTemp = await loadFiles(match.params.club, "content_video");
-    // console.log("videoTemp",contentVideoTemp)
+    contentVideoTemp = await loadFiles(match.params.club, "content_video", clubObj);
     if(contentVideo !== undefined) {
       if (contentVideo === [] || contentVideo[0] !== contentVideoTemp[0]) {
         setContentVideo(contentVideoTemp);
       }
     }
     contentPhotoTemp = await loadFiles(match.params.club, "content_photo");
-    // console.log("phototemp",contentPhotoTemp)
     if(contentPhoto !== undefined) {
       if (contentPhoto === [] || contentPhoto[0] !== contentPhotoTemp[0]) {
         setContentPhoto(contentPhotoTemp)
@@ -125,11 +128,8 @@ const Booth = () => {
     <PortfolioProvider value={{ clubObj, posters, activities, contentVideo, contentPhoto, key, name }}>
       <Hero />
       <Introduce />
-      {/* {console.log(contentVideo)} */}
-      {console.log(contentVideo)}
       {contentVideo.length !== 0  ?<Content />: <></>}
       {/* <Photozone /> */}
-      {/* {console.log("photo",contentPhoto)} */}
       {contentPhoto.length !== 0 ? 
       (isMobile ? <Slidemobile /> : <Slidezone />)
       :

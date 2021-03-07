@@ -32,7 +32,6 @@ const theme = createMuiTheme({
   },
 });
 
-console.log(theme.typography);
 ReactDOM.render(
   // <React.StrictMode>
   <ThemeProvider theme={theme}>
