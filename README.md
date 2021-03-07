@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# 명지대학교 인문캠퍼스 동아리홍보축제 플랫폼
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+홈페이지 [바로가기](https://mjuclubsfestival.com/)
 
-## Available Scripts
+## Created By
 
-In the project directory, you can run:
+### **명지대학교 인문캠퍼스 총동아리연합회 비상대책위원회**
 
-### `npm start`
+Designer 노현정  
+Developer [양성훈](https://github.com/seonghunYang) | [정동준](https://github.com/dj-1087) | [김휘준]()
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 플랫폼 구성
 
-### `npm test`
+### **홍보:** `동아리 소개`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 동아리 소개글
+- 활동사진, 영상, 전시물 등
+- 신입회원 모집안내
 
-### `npm run build`
+### **축제:** `보물을 찾아라!`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 이벤트 컨셉: **보물 찾기**
+- 컨셉 캐릭터: **트레져헌터+어몽어스**
+- 보물
+  - 1등 : 아이패드 8세대 128GB <색상 선택> (1명)
+  - 2등 : 인스탁스 미니11 (1명)
+  - 3등 : 치킨 교환권 (3명)
+- 이벤트 목적: 사이트 방문 유도
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 페이지 구성
 
-### `npm run eject`
+### **메인페이지:** `캠퍼스 맵`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- 학교 건물 그림을 이용한 **이미지맵**
+- 7개의 학교 건물이 각각의 동아리 분과를 대표
+- 밴치마킹 사례: [정부혁신 박람회](https://www.innoexpo.kr/) | [서울국제불교박람회](https://www.bexpo.kr/) | [서울시마음건강박람회](https://www.xn--939a1gj81akhch4dsukv9c2zkelbt94g.com/)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### **분과페이지:** `컬러 마케팅`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- 분과별로 소속된 동아리들을 한 눈에 확인 가능
+- 분과의 컬러화로 사용자들이 각각의 동아리를 방문할때 색깔로 분과를 인식하고 구별하도록 유도
+- 색 적용 방식: 인접색조합(진한색+연한색)을 이용한 그라데이션
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### **동아리페이지:** `정보 블로그`
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 동아리 소개글
+- 활동사진, 영상, 전시물 등
+- 신입회원 모집안내
