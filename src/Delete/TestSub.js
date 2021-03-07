@@ -56,7 +56,6 @@ const Sub = ({ match }) => {
   const classes = useStyles();
   // const departmentName = match.params.department;
   // const clubName = match.params.club;
-  // console.log(match.params);
   const [sections, setSections] = useState(undefined);
   const [departmentObj, setDepartmentObj] = useState(undefined);
   const [clubObj, setClubObj] = useState(undefined);
@@ -65,14 +64,10 @@ const Sub = ({ match }) => {
   let departmentTemp;
   useEffect(async () => {
     sectionTemp = await loading("all", "departments");
-    // console.log(sections);
-    // console.log(sectionTemp);
     if (sections === undefined || sections.id != sectionTemp.id) {
       setSections(sectionTemp);
-      // console.log(sectionTemp);
     }
     departmentTemp = await loading("총동연", "departments");
-    // console.log(departmentTemp)
     if (departmentObj === undefined || departmentObj.id != departmentTemp.id) {
       setDepartmentObj(departmentTemp);
     }

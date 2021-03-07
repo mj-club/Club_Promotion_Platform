@@ -15,7 +15,7 @@ import completeCard from "../../img/complete_card.jpeg";
 import Image from "react-bootstrap/Image";
 
 // import Button from 'react-bootstrap/Button';
-import QuizContent from './quizContent';
+import QuizContent from '../components/chongdongyeon/quizContent';
 import MobileStepper from '@material-ui/core/MobileStepper';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
@@ -77,25 +77,6 @@ const useStyles = makeStyles((theme) => ({
 const steps = ['Stage 1', 'Stage 2', 'Stage 3', 'Stage 4', 'Stage 5', 'Stage 6', 'Stage 7'];
 
 function getStepContent(step) {
-  console.log(step)
-  // switch (step) {
-  //   case 0:
-  //     return <QuizContent idx={0}/>;
-  //   case 1:
-  //     return <QuizContent idx={1}/>;
-  //   case 2:
-  //     return <QuizContent idx={2}/>;
-  //   case 3:
-  //     return <QuizContent idx={3}/>;
-  //   case 4:
-  //     return <QuizContent idx={4}/>;
-  //   case 5:
-  //     return <QuizContent idx={5}/>;
-  //   case 6:
-  //     return <QuizContent idx={6}/>;
-  //   default:
-  //     throw new Error('Unknown step');
-  // }
   return <QuizContent idx={step}/>;
 }
 

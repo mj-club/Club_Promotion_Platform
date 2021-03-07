@@ -82,7 +82,6 @@ const BoothBar = () => {
   const { sections, departmentObj } = useContext(PortfolioContext);
   const {key} = departmentObj
   const contains = sections.contains;
-  console.log(sections.contains);
   const [isDesktop, setIsDesktop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -103,7 +102,6 @@ const BoothBar = () => {
           onClick={function () {
             const header = document.querySelector("header");
             header.classList.toggle("menu-open");
-            console.log(header.classList);
           }}
         >
           <div id="menuicon">
@@ -116,20 +114,15 @@ const BoothBar = () => {
           <img src={mjuIcon} width="30px" className={classes.logoInMob}></img>
         </IconButton>
         <Typography variant="h6" color="inherit" noWrap>
-          명지대 총동연
-        </Typography>
-
-        {/* {sections.map((section) => (
-          <Link
-            noWrap
-            key={section.title}
+        <Link
             // variant="body2"
-            href={section.url}
+            to={`/총동연`}
             className={classes.link}
           >
-            {section.title}
+          명지대 총동연
           </Link>
-        ))} */}
+        </Typography>
+
       </Toolbar>
       <div className="mobile-menu">
         <ul className="menu">
@@ -159,7 +152,13 @@ const BoothBar = () => {
           </Link>
         ))}
         <Typography variant="h6" color="inherit" noWrap>
+        <Link
+            // variant="body2"
+            to={`/총동연`}
+            className={classes.link}
+          >
           명지대 총동연
+          </Link>
         </Typography>
       </Toolbar>
     </AppBar>

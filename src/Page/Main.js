@@ -36,6 +36,7 @@ import study_btn from "../img/study_btn.png";
 import volunteer_btn from "../img/volunteer_btn.png";
 import exhibition_btn from "../img/exhibition_btn.png";
 import chongdongyeon_btn from "../img/chongdongyeon_btn.png"
+import paper from "../img/paper2.jpg";
 import TextField from '@material-ui/core/TextField';
 
 import popup1 from "../img/popup_1.jpeg"
@@ -87,22 +88,21 @@ const Main = () => {
   const [popupIdx, setPopupIdx] = useState(0);
   const [userName, setUserName] = useState(undefined);
   const [helperText, setHelperText] = useState("");
-  const popupImage = [popup1, popup2, popup3, popup4, popup5];
-  const popupText1 = ["", "거기 누구냐! 신분을 밝혀라!", " 들어본 적도 없는 트레져헌터군. 풉 트레져헌터는 아무나 하는게 아니야~ 혼자서는 찾긴 어려울텐데 혹시 나에게 배워서 같이 찾아보겠나?", "너에게 단서 7개를 줄테니 한번 찾아와봐! 찾아온다면 나랑 같이 찾을 자격을 주도록 하지", "흠...그럼 이 섬의 운동장인 총동연 부스를 찾아와봐 그럼 단서를 주지"];
-  const popupText2 = ["", "내.. 내이름은 ", "...ㅈ...좋다...! 어떻게 하면 되는거지?", "좋다! 단서는 어디서 얻지?", "좋아 거기서 보자!!"];
+  const popupImage = [paper, popup1, popup2, popup3, popup4, popup5];
+  const popupText1 = ["", "", "거기 누구냐! 신분을 밝혀라!", " 들어본 적도 없는 트레져헌터군. 풉 트레져헌터는 아무나 하는게 아니야~ 내 테스트를 통과하면 진짜 보물을 찾을 수 있는 자격을 주지", "너에게 단서 7개를 줄테니 한번 정답을 찾아와봐! 다 맞추고 온다면 내가 엄청난걸 줄테니 기대해~~", "흠...그럼 이 섬의 운동장인 총동연 부스를 찾아와봐 그럼 단서를 주지"];
+  const popupText2 = ["", "", "내.. 내이름은 ", "...ㅈ...좋다...! 어떻게 하면 되는거지?", "좋다! 단서는 어디서 얻지?", "좋아 거기서 보자!!"];
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleInputName = () => {
     if ( window.event.keyCode == 13 ) {
       const a = document.getElementById("nameInput");
       let ment = document.getElementById("ment2");
-      console.dir(ment)
       localStorage.setItem('mju_name', a.value);
       setUserName(a.value)
   }
   }
   const handleNext= (event) => {
-    if (popupIdx == 1 & userName === undefined) {
+    if (popupIdx == 2 & userName === undefined) {
       const a = document.getElementById("nameInput");
       if (a.value == ""){
         setHelperText("이름을 입력해주세요!")
@@ -112,26 +112,26 @@ const Main = () => {
       }
       return
     }
-    setPopupIdx((popupIdx+1) % 5);
+    setPopupIdx((popupIdx+1) % 6);
   }
   const handlePrev= () => {
-    setPopupIdx((popupIdx-1) % 5);
+    setPopupIdx((popupIdx-1) % 6);
   }
   useEffect(() => {
     if (window.innerWidth > 769) {
-      setIsDesktop(true);
-      setIsMobile(false);
+    // if (window.innerWidth > 1440) {
+        setIsDesktop(true);
+        setIsMobile(false);
     } else {
       setIsMobile(true);
       setIsDesktop(false);
     }
     if (!localStorage.getItem('mju_name')) {
-      setTimeout(handleShow, 5000)
+      setTimeout(handleShow, 4500)
     }
     const links = document.querySelectorAll(".link");
     links.forEach((link) => {
       const linkName = link.id.slice(0, link.id.indexOf("Link"));
-      // console.log(linkName);
       link.addEventListener("mouseover", (e) => {
         // const target = document.getElementById(linkName)
         // target.src = search[`${linkName}_b`]
@@ -161,18 +161,28 @@ const Main = () => {
         </Modal.Header>
         <Modal.Body>
           <Image src={popupImage[popupIdx]} fluid /></Modal.Body>
+          {popupIdx == 0 ? 
+          <div id="text0">
+            <span className="ment0">
+            안녕하세요 총동아리연합회 비상대책위원회 입니다!<br/><br/>
+
+3/8~3/21일까지 동아리 홍보축제가 명지보물섬에서 진행됩니다🏖
+명지보물섬 플랫폼에서 7개분과 43개의 다양한 중앙동아리 부스를 둘러보시고 원하는 동아리에 자유롭게 지원해보세요!<br/><br/>
+
+여러분은 명지보물섬에서 트레져헌터가 되어 퀴즈를 풀고 보물을 찾게됩니다🗝
+퀴즈를 끝까지 풀고 보물을 얻어 총동아리연합회에서 진행하는 이벤트에 참여해 경품도 얻어보세요!<br/>
+            </span>
+            <br/>
+            <span>*팝업창을 끝까지 봐주시길 바랍니다.</span>
+          </div> : <></>
+}
           <div id="text1">
           <span className={`ment${popupIdx}`} id="ment1">
-            {userName && popupIdx == 2 ? <span className="userName">
+            {userName && popupIdx == 3 ? <span className="userName">
             {userName}?
           </span> : <></>}
-          { popupIdx == 1 ?
-          <TypeWriter typing={0.7}>
-            {popupText1[1]}
-            </TypeWriter> : <></>
-          }
           { popupIdx == 2 ?
-          <TypeWriter typing={1}>
+          <TypeWriter typing={0.7}>
             {popupText1[2]}
             </TypeWriter> : <></>
           }
@@ -186,18 +196,58 @@ const Main = () => {
             {popupText1[4]}
             </TypeWriter> : <></>
           }
+          { popupIdx == 5 ?
+          <TypeWriter typing={1}>
+            {popupText1[5]}
+            </TypeWriter> : <></>
+          }
             </span>
           </div>
           <div id="text2">
+          
           <span className={`ment${popupIdx}`} id="ment2">
-          {popupText2[popupIdx]}
-          {/* <span className={`ment${2}`} id="ment2"><TypeWriter typing={1}>{popupText2[popupIdx]}</TypeWriter> */}
-          {/* <span className={`ment${3}`} id="ment2"><TypeWriter typing={1}>{popupText2[popupIdx]}</TypeWriter> */}
-          {userName === undefined && popupIdx == 1 ?
+          { popupIdx == 2 ?
+          <Fade 
+          top
+          duration={1000}
+          delay={3000}
+          distance={"20px"}>
+            <span>{popupText2[2]}</span>
+            </Fade> : <></>
+          }
+          { popupIdx == 3 ?
+          <Fade 
+          top
+          duration={1000}
+          delay={6500}
+          distance={"20px"}>
+            <span>{popupText2[3]}</span>
+            </Fade> : <></>
+          }
+          { popupIdx == 4 ?
+          <Fade 
+          top
+          duration={1000}
+          delay={5000}
+          distance={"20px"}>
+            <span>{popupText2[4]}</span>
+            </Fade> : <></>
+          }
+          { popupIdx == 5 ?
+          <Fade 
+          top
+          duration={1000}
+          delay={4000}
+          distance={"20px"}>
+            <span>{popupText2[5]}</span>
+            </Fade> : <></>
+          }
+          
+          {userName === undefined && popupIdx == 2 ?
             <TextField error={helperText == "" ? false : true} id="nameInput" label="내 이름은?" size="small" variant="outlined" onKeyPress={handleInputName} helperText={helperText} />
             // (isDesktop ? <Button>제출</Button> : <></> )
           :
-          (popupIdx == 1 ?
+          (popupIdx == 2 ?
           <Fade
           top
           duration={500}
@@ -216,7 +266,7 @@ const Main = () => {
           <Button variant="secondary" onClick={handlePrev}>
             prev
           </Button> : <></>}
-          { popupIdx != 4 ?
+          { popupIdx != 5 ?
           <Button variant="primary" onClick={handleNext}>
             Next
           </Button> : <Button variant="primary" onClick={handleClose}>GoGo</Button>
@@ -347,7 +397,7 @@ const Main = () => {
         ) : (
           <></>
         )}
-        <Jump duration={1000} delay={3500}>
+        <Jump duration={800} delay={3000}>
           <Fade duration={1500} delay={500}>
             <Image src={isDesktop ? banner : banner_m} id="banner" fluid />
           </Fade>

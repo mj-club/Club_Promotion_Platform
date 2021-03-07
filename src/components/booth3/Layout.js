@@ -86,7 +86,7 @@ export default function Layout({ name, brief_introduction, hash_tags }) {
           </div>
           <div className={classes.flex}>
             {hash_tags.map((hash_tag) => (
-              <span className={classes.hashTag}>{"#" + hash_tag}</span>
+              <span key={hash_tag} className={classes.hashTag}>{"#" + hash_tag}</span>
             ))}
           </div>
         </Toolbar>

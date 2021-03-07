@@ -48,16 +48,7 @@ const Projects = () => {
                 <div className="project-wrapper__text">
                   <h3 className="project-wrapper__text-title">{""}</h3>
                   <div className="contentBound">
-                    <p id="information-text"> 
-                      {recruitment.map((line, i) => {
-                        
-                        // <span key={i}>
-                        //   <span>{line}</span> <br />
-                        // </span>
-                        
-})}</p>
-                   
-                    {/* <p className="mb-4">{info2 || ""}</p> */}
+                    <p id="information-text"></p>
                   </div>
                 </div>
               </Fade>

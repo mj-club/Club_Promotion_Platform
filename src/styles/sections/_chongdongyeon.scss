@@ -22,8 +22,7 @@
   position: relative;
   color: $white-color;
   height: 100%;
-  // height: 90vh;
-  min-height: 80vh;
+  min-height: 100%;
   border-top: 0px;
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
@@ -101,6 +100,93 @@
     }
   }
 }
+#contact.chongdongyeon {
+  position: relative;
+  color: $white-color;
+  height: 100%;
+  min-height: 100%;
+  border-top: 0px;
+  -webkit-clip-path: polygon(0 15vh, 100% 0, 100% 100%, 0 100%);
+  clip-path: polygon(0 15vh, 100% 0, 100% 100%, 0 100%);
+  padding-bottom: 10%;
+  z-index: 5;
+  // padding-top: 6vh;
+  @include respond(tab-land) {
+    height: 100%;
+    -webkit-clip-path: none;
+    clip-path: none;
+  }
+
+  .about-wrapper {
+    @include respond(phone) {
+      padding-bottom: 5rem;
+    }
+
+    &__image {
+      display: flex;
+      height: 100%;
+      // height: 70vh;
+      align-items: center;
+      justify-content: center;
+    }
+    @include respond(tab-port) {
+      padding-bottom: 6.4rem;
+    }
+    @include respond(tab-land) {
+      height: 100%;
+    }
+
+    &__info {
+      margin-top: 11px;
+      display: flex;
+      height: 100%;
+      justify-content: center;
+      flex-direction: column;
+      
+
+      @include respond(phone) {
+        align-items: center;
+        
+      }
+
+      &-text {
+        text-align: left;
+        font-size: 1.8rem;
+        line-height: 1.5;
+        @include respond(tab-port) {
+          font-size: 1.5rem;
+          text-align: left;
+        }
+        @include respond(phone) {
+          font-size: 1.6rem;
+          text-align: left;
+        }
+
+        &--important {
+          background: darken($secondary-color, 1%);
+          display: inline-block;
+          font-style: italic;
+          padding: 0 0.3rem;
+          margin: 0.3rem 0;
+          line-height: 1.6;
+
+          @include respond(phone) {
+            display: inline;
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            font-style: normal;
+          }
+        }
+      }
+    }
+  }
+}
+
+#about.intro {
+  height: 100%;
+}
+
 
 #projects.chongdongyeon {
   position: relative;
@@ -110,15 +196,20 @@
 #hunter {
   position: absolute;
   width: 90%;
+  height: 55vh;
   left: 10%;
-  top: -15vh;
+  top: -10vh;
   @include respond(phone) {
     position: relative;
     top: auto;
+    width: 100%;
     left: auto;
+    height: 100%;
   }
 }
 
 .relativeDiv {
   position: relative;
+  width: 100%;
+  height: 55vh;
 }

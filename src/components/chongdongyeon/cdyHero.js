@@ -31,9 +31,10 @@ const Header = () => {
             {/* {title || 'Hi, my name is'}{' '} */}
             <span className={`text-color-main `}>{name }</span>
             <br />
-            { hashtag.map((tag) => {
+            { hashtag.map((tag, i) => {
               return (
               <a
+                key={i}
                 rel="noopener noreferrer"
                 target="_blank"
                 className={`cta-btn text-color-main hashtag  ${key}`}

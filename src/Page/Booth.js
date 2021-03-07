@@ -41,7 +41,6 @@ const loading = async () => {
   return clubObj;
 };
 const Booth = ({ match }) => {
-  console.log(match.params);
   const classes = useStyles();
   const [urls, setUrls] = useState([]);
   const [clubObj, setClubObj] = useState(undefined);
@@ -51,7 +50,6 @@ const Booth = ({ match }) => {
     obj = await loading();
     if (clubObj === undefined || clubObj !== obj) {
       setClubObj(obj);
-      console.log(obj);
     }
     images = await loadImg();
     if (urls === undefined || urls !== images) {

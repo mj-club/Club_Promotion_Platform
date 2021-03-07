@@ -8,7 +8,6 @@ const FileUpload = ({ clubObj }) => {
   const mkArr = () => {
     const textArea = document.getElementById("upload");
     const lines = textArea.value.split("\n");
-    console.log(lines.length);
     return lines;
   };
   const upload = async (lines) => {
@@ -29,7 +28,6 @@ const FileUpload = ({ clubObj }) => {
     }
   };
   const handleUpload = async () => {
-    console.log(clubObj);
     const lines = mkArr();
     upload(lines);
   };

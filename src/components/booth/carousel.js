@@ -64,14 +64,12 @@ export const ShowingGridList = ({ urls }) => {
   const [isMobile, setIsMobile] = useState(false);
   const handleOpen = (e) => {
     setTargetUrl(e.target.src);
-    console.log(targetUrl);
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
   };
   useEffect(() => {
-    console.log("render");
     if (window.innerWidth > 769) {
       setIsDesktop(true);
       setIsMobile(false);
@@ -176,14 +174,12 @@ export const ShowimgCarosel = ({ urls, height }) => {
   const [isMobile, setIsMobile] = useState(false);
   const handleOpen = (e) => {
     setTargetUrl(e.target.src);
-    console.log(targetUrl);
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
   };
   useEffect(() => {
-    console.log("render");
     if (window.innerWidth > 769) {
       setIsDesktop(true);
       setIsMobile(false);

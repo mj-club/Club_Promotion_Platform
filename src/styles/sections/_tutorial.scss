@@ -4,7 +4,12 @@
   font-weight: normal;
   font-style: normal;
 }
-
+@font-face {
+  font-family: 'Cafe24Ohsquare';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Cafe24Ohsquare.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
 #tutorial {
   @include respond(phone) {
@@ -15,24 +20,25 @@
   }
 }
 
-.ment1 {
+.ment0 {
+  font-size: 1.5rem;
+  // white-space: nowrap;
+  @include respond(phone) {
+    font-size: 1rem;
+  }
+}
+.ment2 {
   font-size: 1.5rem;
   white-space: nowrap;
   @include respond(phone) {
     font-size: 1.5rem;
   }
 }
-.ment2 {
+.ment3 {
   font-size: 1.25rem;
   width: 100%;
   @include respond(phone) {
-    font-size: 0.9rem;
-  }
-}
-.ment3 {
-  font-size: 1.5rem;
-  @include respond(phone) {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 }
 .ment4 {
@@ -41,9 +47,26 @@
     font-size: 1rem;
   }
 }
+.ment5 {
+  font-size: 1.5rem;
+  @include respond(phone) {
+    font-size: 1rem;
+  }
+}
 
 
 
+#text0 {
+  position: absolute;
+  width: 68%;
+  left: 18%;
+  top: 25%;
+  font-family: "Cafe24Ohsquare";
+  @include respond(phone) {
+    top: 27%;
+    left: 17%;
+  }
+}
 
 #text1 {
   position: absolute;
@@ -77,8 +100,9 @@
   align-items: center;
   font-family: "둥근모";
   @include respond(phone) {
-    top: 65%;
-    left: 15%;
+    top: 39.5%;
+    left: 54%;
+    font-weight: bold;
   }
 }
 #completeCardMent{
@@ -99,17 +123,39 @@
   font-weight: bold;
 }
 
-#hunterMent {
+.hunterMent {
   position: absolute;
   color:black;
-  font-size: 2rem;
+  width: 63%;
+  font-size: 1.7rem;
   left: 15%;
-  top: 67%;
+  top: 10%;
   align-items: center;
   font-family: "둥근모";
   @include respond(phone) {
-    top: 30%;
-    left: 10%;
+    top: 25%;
+    left: 8%;
     font-size: 1.25rem;
+  }
+}
+
+.hunterMent#hunterMent0 {
+  width: 63%;
+  font-size: 1.25rem;
+  top: 8%;
+  @include respond(phone) {
+    top: 25%;
+    left: 8%;
+    font-size: 0.75rem;
+  }
+}
+.hunterMent#hunterMent7 {
+  width: 63%;
+  font-size: 1.25rem;
+  top: 8%;
+  @include respond(phone) {
+    top: 25%;
+    left: 8%;
+    font-size: 0.75rem;
   }
 }

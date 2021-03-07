@@ -20,7 +20,6 @@ export default function Slider({ items, width = 600, visible = 1, style, childre
   const getPos = useCallback((i, firstVis, firstVisIdx) => idx(i - firstVis + firstVisIdx), [idx])
   const [springs, set] = useSprings(items.length, i => ({ x: (i < items.length - 1 ? i : -1) * width }))
   const prev = useRef([0, 1])
-  console.log(items)
   const runSprings = useCallback(
     (y, vy) => {
       const firstVis = idx(Math.floor(y / width) % items.length)
