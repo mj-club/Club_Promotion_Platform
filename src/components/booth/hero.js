@@ -6,7 +6,7 @@ import PortfolioContext from "../../context/context";
 import Navbar from "react-bootstrap/Navbar";
 
 const Header = () => {
-  const { clubObj, key,  name } = useContext(PortfolioContext);
+  const { clubObj, key, name } = useContext(PortfolioContext);
   const { brief_introduction, type } = clubObj;
   const [isDesktop, setIsDesktop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);

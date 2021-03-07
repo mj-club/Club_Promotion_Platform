@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useContext } from 'react'
-import ReactDOM from 'react-dom'
-import styled from 'styled-components'
-import { a } from 'react-spring'
+import React, { useEffect, useState, useContext } from "react";
+import ReactDOM from "react-dom";
+import styled from "styled-components";
+import { a } from "react-spring";
 import PortfolioContext from "context/context";
 import Photomobile from "./photoMobile";
 import Title from "components/booth/title";
@@ -17,4 +17,4 @@ const Slidemobile = () => {
     </section>
   );
 };
-export default Slidemobile
+export default Slidemobile;

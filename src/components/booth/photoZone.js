@@ -3,7 +3,7 @@ import Fade from "react-reveal/Fade";
 import { Container, Row, Col } from "react-bootstrap";
 import PortfolioContext from "../../context/context";
 import Title from "components/booth/title";
-import Photocard from "./photoCard"
+import Photocard from "./photoCard";
 import Image from "react-bootstrap/Image";
 const Content = () => {
   const { clubObj, posters } = useContext(PortfolioContext);
@@ -24,7 +24,7 @@ const Content = () => {
   return (
     <section id="contentVideo">
       <Container id="contentroot" fluid>
-      <Title title="동아리 영상" />
+        <Title title="동아리 영상" />
         <Photocard></Photocard>
       </Container>
     </section>

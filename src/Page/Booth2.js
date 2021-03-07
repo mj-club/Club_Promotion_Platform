@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({}));
 //   }
 //   return urls;
 // };
-const loadFiles = async (clubName, fileType, clubObj={}) => {
+const loadFiles = async (clubName, fileType, clubObj = {}) => {
   const urls = [];
   const arr = await storageService
     .ref()
@@ -51,9 +51,9 @@ const loadFiles = async (clubName, fileType, clubObj={}) => {
     let url = await arr.items[i].getDownloadURL();
     urls.push(url);
   }
-  if(clubObj.content_video) {
+  if (clubObj.content_video) {
     for (const url of clubObj.content_video) {
-      urls.push(url)
+      urls.push(url);
     }
   }
   return urls;
@@ -105,37 +105,56 @@ const Booth = () => {
       setPosters(images);
     }
     activityTemp = await loadFiles(match.params.club, "activity");
-    if(activities !== undefined) { 
+    if (activities !== undefined) {
       if (activities === [] || activities[0] !== activityTemp[0]) {
         setActivities(activityTemp);
       }
     }
-    contentVideoTemp = await loadFiles(match.params.club, "content_video", clubObj);
-    if(contentVideo !== undefined) {
+    contentVideoTemp = await loadFiles(
+      match.params.club,
+      "content_video",
+      clubObj
+    );
+    if (contentVideo !== undefined) {
       if (contentVideo === [] || contentVideo[0] !== contentVideoTemp[0]) {
         setContentVideo(contentVideoTemp);
       }
     }
     contentPhotoTemp = await loadFiles(match.params.club, "content_photo");
-    if(contentPhoto !== undefined) {
+    if (contentPhoto !== undefined) {
       if (contentPhoto === [] || contentPhoto[0] !== contentPhotoTemp[0]) {
-        setContentPhoto(contentPhotoTemp)
+        setContentPhoto(contentPhotoTemp);
       }
     }
   });
 
   return clubObj !== undefined ? (
-    <PortfolioProvider value={{ clubObj, posters, activities, contentVideo, contentPhoto, key, name }}>
+    <PortfolioProvider
+      value={{
+        clubObj,
+        posters,
+        activities,
+        contentVideo,
+        contentPhoto,
+        key,
+        name,
+      }}
+    >
       <Hero />
       <Introduce />
-      {contentVideo.length !== 0  ?<Content />: <></>}
+      {contentVideo.length !== 0 ? <Content /> : <></>}
       {/* <Photozone /> */}
-      {contentPhoto.length !== 0 ? 
-      (isMobile ? <Slidemobile /> : <Slidezone />)
-      :
-      <></>}
-      {clubObj.recruitment !== undefined ?<Projects />:<></>}
-      {clubObj.how_to_join !== undefined ?<Contact />:<></>}
+      {contentPhoto.length !== 0 ? (
+        isMobile ? (
+          <Slidemobile />
+        ) : (
+          <Slidezone />
+        )
+      ) : (
+        <></>
+      )}
+      {clubObj.recruitment !== undefined ? <Projects /> : <></>}
+      {clubObj.how_to_join !== undefined ? <Contact /> : <></>}
       <Footer />
     </PortfolioProvider>
   ) : (

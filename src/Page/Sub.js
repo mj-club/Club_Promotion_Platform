@@ -25,9 +25,7 @@ import Booth from "Page/Booth2";
 // ];
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    
-  }
+  root: {},
 }));
 // const loadImg = async () => {
 //   const urls = [];

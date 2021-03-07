@@ -2,85 +2,84 @@ import React, { useContext, useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import PortfolioContext from "../../context/context";
 import { Link } from "react-router-dom";
-import 통해 from "../../img/icon/통해.svg"
-import 흑풍_the_BLAST from "../../img/icon/흑풍 the BLAST.svg"
-import 주리랑 from "../../img/icon/주리랑.svg"
-import 화이트홀스 from "../../img/icon/화이트홀스.svg"
-import 명지서법 from "../../img/icon/명지서법.svg"
-import Als from "../../img/icon/ALS.svg"
-import 너나들이 from "../../img/icon/너나들이.svg"
-import RCY from "../../img/icon/rcy.svg"
-import PTPI from "../../img/icon/ptpi.svg"
-import 키비탄 from "../../img/icon/키비탄.svg"
-import 나누미 from "../../img/icon/나누미.svg"
-import SK루키 from "../../img/icon/SK루키.svg"
-import PER from "../../img/icon/per.svg"
-import 인액터스 from "../../img/icon/인액터스.svg"
-import Flower from "../../img/icon/Flow_er.svg"
-import 농어민후생연구회_흙 from "../../img/icon/농어민후생연구회 흙.svg"
-import 비주얼 from "../../img/icon/비주얼.svg"
-import COA from "../../img/icon/코아.svg"
-import 디비전 from "../../img/icon/디비전.svg"
-import 포토랩 from "../../img/icon/포토랩.svg"
-import 콕콕콕 from "../../img/icon/콕콕콕.svg"
-import MJTA from "../../img/icon/MJTA.svg"
-import 바다이야기 from "../../img/icon/바다이야기.svg"
-import 무릉도원 from "../../img/icon/무릉도원.svg"
-import 나이너스 from "../../img/icon/나이너스.svg"
-import 삼박자 from "../../img/icon/삼박자.svg"
-import 굴렁쇠 from "../../img/icon/굴렁쇠.svg"
-import 파인 from "../../img/icon/파인.svg"
-import CCC from "../../img/icon/C.C.C.svg"
-import 실로암 from "../../img/icon/실로암.svg"
-import CFM from "../../img/icon/CFM.svg"
-import UBF from "../../img/icon/UBF.svg"
-import TIME from "../../img/icon/TIME.svg"
-import 대건안드레아 from "../../img/icon/대건안드레아.svg"
-import 스카우트 from "../../img/icon/스카우트.svg"
-import FC명지 from "../../img/icon/FC명지.svg"
-
+import 통해 from "../../img/icon/통해.svg";
+import 흑풍_the_BLAST from "../../img/icon/흑풍 the BLAST.svg";
+import 주리랑 from "../../img/icon/주리랑.svg";
+import 화이트홀스 from "../../img/icon/화이트홀스.svg";
+import 명지서법 from "../../img/icon/명지서법.svg";
+import Als from "../../img/icon/ALS.svg";
+import 너나들이 from "../../img/icon/너나들이.svg";
+import RCY from "../../img/icon/rcy.svg";
+import PTPI from "../../img/icon/ptpi.svg";
+import 키비탄 from "../../img/icon/키비탄.svg";
+import 나누미 from "../../img/icon/나누미.svg";
+import SK루키 from "../../img/icon/SK루키.svg";
+import PER from "../../img/icon/per.svg";
+import 인액터스 from "../../img/icon/인액터스.svg";
+import Flower from "../../img/icon/Flow_er.svg";
+import 농어민후생연구회_흙 from "../../img/icon/농어민후생연구회 흙.svg";
+import 비주얼 from "../../img/icon/비주얼.svg";
+import COA from "../../img/icon/코아.svg";
+import 디비전 from "../../img/icon/디비전.svg";
+import 포토랩 from "../../img/icon/포토랩.svg";
+import 콕콕콕 from "../../img/icon/콕콕콕.svg";
+import MJTA from "../../img/icon/MJTA.svg";
+import 바다이야기 from "../../img/icon/바다이야기.svg";
+import 무릉도원 from "../../img/icon/무릉도원.svg";
+import 나이너스 from "../../img/icon/나이너스.svg";
+import 삼박자 from "../../img/icon/삼박자.svg";
+import 굴렁쇠 from "../../img/icon/굴렁쇠.svg";
+import 파인 from "../../img/icon/파인.svg";
+import CCC from "../../img/icon/C.C.C.svg";
+import 실로암 from "../../img/icon/실로암.svg";
+import CFM from "../../img/icon/CFM.svg";
+import UBF from "../../img/icon/UBF.svg";
+import TIME from "../../img/icon/TIME.svg";
+import 대건안드레아 from "../../img/icon/대건안드레아.svg";
+import 스카우트 from "../../img/icon/스카우트.svg";
+import FC명지 from "../../img/icon/FC명지.svg";
 
 const Chapternav = () => {
   const { departmentObj } = useContext(PortfolioContext);
   const { id, contains } = departmentObj;
   const dic = {
-    "CCC": CCC,
-    "실로암": 실로암,
-    "CFM": CFM,
-    "UBF": UBF,
-    "통해": 통해,
-    "흑풍_the_BLAST": 흑풍_the_BLAST,
-    "주리랑": 주리랑,
-    "화이트홀스": 화이트홀스,
-    "Als": Als,
-    "명지서법": 명지서법,
-    "너나들이": 너나들이,
-    "RCY": RCY,
-    "PTPI": PTPI,
-    "키비탄": 키비탄,
-    "나누미": 나누미,
-    "SK루키": SK루키,
-    "PER": PER,
-    "인액터스": 인액터스,
-    "Flower": Flower,
-    "농어민후생연구회_흙": 농어민후생연구회_흙,
-    "비주얼": 비주얼,
-    "COA": COA,
-    "디비전": 디비전,
-    "포토랩": 포토랩,
-    "콕콕콕": 콕콕콕,
-    "MJTA": MJTA,
-    "바다이야기": 바다이야기,
-    "무릉도원": 무릉도원,
-    "나이너스": 나이너스,
-    "삼박자": 삼박자,
-    "굴렁쇠": 굴렁쇠,
-    "파인": 파인,
-    "TIME": TIME,
-    "대건안드레아": 대건안드레아,
-    "스카우트": 스카우트,
-    "FC명지": FC명지
-  }
+    CCC: CCC,
+    실로암: 실로암,
+    CFM: CFM,
+    UBF: UBF,
+    통해: 통해,
+    흑풍_the_BLAST: 흑풍_the_BLAST,
+    주리랑: 주리랑,
+    화이트홀스: 화이트홀스,
+    Als: Als,
+    명지서법: 명지서법,
+    너나들이: 너나들이,
+    RCY: RCY,
+    PTPI: PTPI,
+    키비탄: 키비탄,
+    나누미: 나누미,
+    SK루키: SK루키,
+    PER: PER,
+    인액터스: 인액터스,
+    Flower: Flower,
+    농어민후생연구회_흙: 농어민후생연구회_흙,
+    비주얼: 비주얼,
+    COA: COA,
+    디비전: 디비전,
+    포토랩: 포토랩,
+    콕콕콕: 콕콕콕,
+    MJTA: MJTA,
+    바다이야기: 바다이야기,
+    무릉도원: 무릉도원,
+    나이너스: 나이너스,
+    삼박자: 삼박자,
+    굴렁쇠: 굴렁쇠,
+    파인: 파인,
+    TIME: TIME,
+    대건안드레아: 대건안드레아,
+    스카우트: 스카우트,
+    FC명지: FC명지,
+  };
   useEffect(() => {
     function isTouch() {
       return !!(
@@ -274,17 +273,11 @@ const Chapternav = () => {
 
       function observerCallback(entries, observer) {
         entries.forEach(function (entry) {
-          let name = entry.target.id.replace(/\s/g, "")
+          let name = entry.target.id.replace(/\s/g, "");
           observedItems[name].visible = entry.isIntersecting;
-          if (
-            observedItems[name].index === 0 &&
-            entry.isIntersecting
-          ) {
+          if (observedItems[name].index === 0 && entry.isIntersecting) {
             hideShowRafCall(true, startOfList);
-          } else if (
-            observedItems[name].index === 0 &&
-            !entry.isIntersecting
-          ) {
+          } else if (observedItems[name].index === 0 && !entry.isIntersecting) {
             hideShowRafCall(false, startOfList);
           } else if (
             observedItems[name].index === numItemsObserved() - 1 &&
@@ -376,12 +369,21 @@ const Chapternav = () => {
               const url = `/booth/${id}/${contain.key}`;
               // const url = `./${name}/${contain}`;
               return (
-                <li key={contain.name} id={contain.name} className="chapternav-item">
+                <li
+                  key={contain.name}
+                  id={contain.name}
+                  className="chapternav-item"
+                >
                   <a className="chapternav-link" href={url}>
                     <figure className="chapternav-icon">
-                      <img width="40" height="32" viewBox="0 0 40 32" src={dic[contain.key]}></img>
+                      <img
+                        width="40"
+                        height="32"
+                        viewBox="0 0 40 32"
+                        src={dic[contain.key]}
+                      ></img>
                     </figure>
-                    <span className="chapternav-label" >{contain.name}</span>
+                    <span className="chapternav-label">{contain.name}</span>
                   </a>
                 </li>
               );
