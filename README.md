@@ -1,5 +1,5 @@
 # 명지대학교 인문캠퍼스 동아리홍보축제 플랫폼
-
+https://news.mju.ac.kr/news/articleView.html?idxno=10627
 홈페이지 [바로가기](https://mjuclubsfestival.com/)
 
 ## Created By
